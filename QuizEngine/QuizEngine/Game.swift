@@ -1,5 +1,6 @@
 //  Created by aa on 11/6/22.
 
+@available(*, deprecated)
 public class Game<Question, Answer: Equatable, R: Router> where R.Question == Question, R.Answer == Answer {
     let flow: Flow<Question, Answer, R>
 
