@@ -8,6 +8,7 @@ public class Game<Question, Answer: Equatable, R: Router> where R.Question == Qu
     }
 }
 
+@available(*, deprecated)
 public func startGame<Question, Answer: Equatable, R: Router>(
     questions: [Question],
     router: R,
