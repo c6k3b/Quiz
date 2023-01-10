@@ -356,7 +356,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0081804729138A630068EF40 /* Build configuration list for PBXNativeTarget "QuizApp" */;
 			buildPhases = (
-				0081805029138C620068EF40 /* Swiftlint */,
+				0062F5D1296DDC9700EC821A /* SwiftLint */,
 				0081801929138A600068EF40 /* Sources */,
 				0081801A29138A600068EF40 /* Frameworks */,
 				0081801B29138A600068EF40 /* Resources */,
@@ -452,9 +452,8 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0081805029138C620068EF40 /* Swiftlint */ = {
+		0062F5D1296DDC9700EC821A /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -462,7 +461,7 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
