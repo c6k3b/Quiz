@@ -1,6 +1,6 @@
 //  Created by aa on 11/6/22.
 
-@testable import QuizEngine
+import QuizEngine
 
 class RouterSpy: Router {
     var routedQuestions: [String] = []
