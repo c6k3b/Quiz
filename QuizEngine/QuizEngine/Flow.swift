@@ -1,5 +1,3 @@
-import Foundation
-
 class Flow<Question, Answer, R: Router> where R.Question == Question, R.Answer == Answer {
     private let router: R
     private let questions: [Question]
