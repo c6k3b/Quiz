@@ -1,9 +1,10 @@
 //  Created by aa on 11/6/22.
 
 import XCTest
-@testable import QuizEngine
+import QuizEngine
 
-class GameTest: XCTestCase {
+@available(*, deprecated)
+class DeprecatedGameTest: XCTestCase {
     let router = RouterSpy()
     var game: Game<String, String, RouterSpy>!
 

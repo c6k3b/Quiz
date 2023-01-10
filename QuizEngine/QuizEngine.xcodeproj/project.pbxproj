@@ -18,11 +18,11 @@
 		0037C4C629199D80004937CA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425BD29183387000CD481 /* Result.swift */; };
 		0037C4C729199D80004937CA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C329183766000CD481 /* Game.swift */; };
 		0037C4C829199D80004937CA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425BF29183390000CD481 /* Router.swift */; };
-		0037C4C929199DC9004937CA /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* GameTest.swift */; };
+		0037C4C929199DC9004937CA /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* DeprecatedGameTest.swift */; };
 		0037C4CA29199DC9004937CA /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C5291838CD000CD481 /* RouterSpy.swift */; };
 		0037C4CB29199DC9004937CA /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104732912B34A00425F1A /* FlowTest.swift */; };
 		0048E69D292EA527004008F0 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104732912B34A00425F1A /* FlowTest.swift */; };
-		0048E69E292EA52E004008F0 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* GameTest.swift */; };
+		0048E69E292EA52E004008F0 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* DeprecatedGameTest.swift */; };
 		0048E69F292EA531004008F0 /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C5291838CD000CD481 /* RouterSpy.swift */; };
 		00D104642912B25F00425F1A /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D104592912B25F00425F1A /* QuizEngine.framework */; };
 /* End PBXBuildFile section */
@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		001425BD29183387000CD481 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		001425BF29183390000CD481 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		001425C12918342C000CD481 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
+		001425C12918342C000CD481 /* DeprecatedGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedGameTest.swift; sourceTree = "<group>"; };
 		001425C329183766000CD481 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		001425C5291838CD000CD481 /* RouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpy.swift; sourceTree = "<group>"; };
 		0018907B291ED096005ED73D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				00D104732912B34A00425F1A /* FlowTest.swift */,
-				001425C12918342C000CD481 /* GameTest.swift */,
+				001425C12918342C000CD481 /* DeprecatedGameTest.swift */,
 				001425C5291838CD000CD481 /* RouterSpy.swift */,
 			);
 			path = QuizEngineTests;
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0048E69D292EA527004008F0 /* FlowTest.swift in Sources */,
-				0048E69E292EA52E004008F0 /* GameTest.swift in Sources */,
+				0048E69E292EA52E004008F0 /* DeprecatedGameTest.swift in Sources */,
 				0048E69F292EA531004008F0 /* RouterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0037C4C929199DC9004937CA /* GameTest.swift in Sources */,
+				0037C4C929199DC9004937CA /* DeprecatedGameTest.swift in Sources */,
 				0037C4CA29199DC9004937CA /* RouterSpy.swift in Sources */,
 				0037C4CB29199DC9004937CA /* FlowTest.swift in Sources */,
 			);
