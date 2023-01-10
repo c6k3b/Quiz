@@ -50,7 +50,7 @@ class FlowTest: XCTestCase {
         sut.start()
         router.answerCallback("A1")
 
-        XCTAssertEqual(router.routedQuestions, ["Q1"])
+        XCTAssertEqual(  router.routedQuestions, ["Q1"])
     }
 
     func test_startWithNoQuestions_routesToResult() {

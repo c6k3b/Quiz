@@ -1,4 +1,4 @@
-    //  ResultsPresenterTest.swift
+//  ResultsPresenterTest.swift
 //  Created by aa on 11/10/22.
 
 import XCTest
@@ -33,7 +33,7 @@ class ResultsPresenterTest: XCTestCase {
 
     func test_presentableAnswers_withWrongSingleAnswer_mapsAnswer() {
         let answers = [singleAnswerQuestion: ["A1"]]
-        let correctAnswers =  [singleAnswerQuestion: ["A2"]]
+        let correctAnswers = [singleAnswerQuestion: ["A2"]]
         let result = Result.make(answers: answers)
 
         let sut = ResultsPresenter(result: result, questions: [singleAnswerQuestion], correctAnswers: correctAnswers)

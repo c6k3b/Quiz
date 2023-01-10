@@ -4,7 +4,7 @@
 
 class RouterSpy: Router {
     var routedQuestions: [String] = []
-    var routedResult: Result<String, String>? = nil
+    var routedResult: Result<String, String>?
     var answerCallback: (String) -> Void = { _ in }
 
     func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
