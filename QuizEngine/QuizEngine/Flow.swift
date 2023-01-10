@@ -1,4 +1,4 @@
-class Flow<R: Router> {
+class Flow<R: QuizDelegate> {
     typealias Question = R.Question
     typealias Answer = R.Answer
 
@@ -15,13 +15,13 @@ class Flow<R: Router> {
 
     func start() {
         if let firstQuestion = questions.first {
-            router.routeTo(question: firstQuestion, answerCallback: nextCallback(from: firstQuestion))
+            router.handle(question: firstQuestion, answerCallback: nextCallback(from: firstQuestion))
         } else {
-            router.routeTo(result: result())
+            router.handle(result: result())
         }
     }
 
-    private func nextCallback(from question: Question) -> R.AnswerCallback {
+    private func nextCallback(from question: Question) -> (Answer) -> Void {
         return { [weak self] in self?.routeNext(question, $0) }
     }
 
@@ -32,9 +32,9 @@ class Flow<R: Router> {
 
             if nextQuestionIndex < questions.count {
                 let nextQuestion = questions[nextQuestionIndex]
-                router.routeTo(question: nextQuestion, answerCallback: nextCallback(from: nextQuestion))
+                router.handle(question: nextQuestion, answerCallback: nextCallback(from: nextQuestion))
             } else {
-                router.routeTo(result: result())
+                router.handle(result: result())
             }
         }
     }
@@ -43,3 +43,25 @@ class Flow<R: Router> {
         return Result(answers: answers, score: scoring(answers))
     }
 }
+
+//    private extension Flow {
+//        func routeToQuestion(at index: Int) {
+//            if index < questions.endIndex {
+//                let question = questions[index]
+//                router.handle(question: question, answerCallback: callback(for: question, at: index))
+//            } else {
+//                router.handle(result: result())
+//            }
+//        }
+//
+//        func routeToQuestion(after index: Int) {
+//            routeToQuestion(at: questions.index(after: index))
+//        }
+//
+//        func callback(for question: Question, at index: Int) -> (Answer) -> Void {
+//            return { [weak self] answer in
+//                self?.answers[question] = answer
+//                self?.routeToQuestion(at: index)
+//            }
+//        }
+//    }

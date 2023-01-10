@@ -21,21 +21,21 @@ class DeprecatedGameTest: XCTestCase {
         router.answerCallback("wrong")
         router.answerCallback("wrong")
 
-        XCTAssertEqual(router.routedResult!.score, 0)
+        XCTAssertEqual(router.routedResult?.score, 0)
     }
 
     func test_startGame_answerOneOutOfTwoCorrectly_scoresOne() {
         router.answerCallback("A1")
         router.answerCallback("wrong")
 
-        XCTAssertEqual(router.routedResult!.score, 1)
+        XCTAssertEqual(router.routedResult?.score, 1)
     }
 
     func test_startGame_answerTwoOutOfTwoCorrectly_scoresTwo() {
         router.answerCallback("A1")
         router.answerCallback("A2")
 
-        XCTAssertEqual(router.routedResult!.score, 2)
+        XCTAssertEqual(router.routedResult?.score, 2)
     }
 
     private class RouterSpy: Router {

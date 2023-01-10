@@ -76,7 +76,7 @@ class FlowTest: XCTestCase {
         delegate.answerCallback("A1")
         delegate.answerCallback("A2")
 
-        XCTAssertEqual(delegate.handledResult!.answers, ["Q1": "A1", "Q2": "A2"])
+        XCTAssertEqual(delegate.handledResult?.answers, ["Q1": "A1", "Q2": "A2"])
     }
 
     func test_startAndAnswerFirstAndSecondQuestion_withTwoQuestions_scores() {
@@ -86,7 +86,7 @@ class FlowTest: XCTestCase {
         delegate.answerCallback("A1")
         delegate.answerCallback("A2")
 
-        XCTAssertEqual(delegate.handledResult!.score, 10)
+        XCTAssertEqual(delegate.handledResult?.score, 10)
     }
 
     func test_startAndAnswerFirstAndSecondQuestion_withTwoQuestions_scoresWithRightAnswers() {
