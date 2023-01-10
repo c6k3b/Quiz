@@ -1,5 +1,6 @@
 //  Created by aa on 11/6/22.
 
+@available(*, deprecated)
 public protocol Router {
     associatedtype Question: Hashable
     associatedtype Answer: Equatable
