@@ -116,7 +116,9 @@ class FlowTest: XCTestCase {
         questions: [String],
         scoring: @escaping ([String: String]) -> Int = { _ in 0 }
     ) -> Flow<DelegateSpy> {
-        return Flow(questions: questions, router: delegate, scoring: scoring)
+        let sut = Flow(questions: questions, router: delegate, scoring: scoring)
+        weakSUT = sut
+        return sut
     }
 
     private class DelegateSpy: Router, QuizDelegate {
