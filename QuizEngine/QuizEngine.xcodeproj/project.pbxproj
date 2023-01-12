@@ -22,6 +22,7 @@
 		0037C4CB29199DC9004937CA /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104732912B34A00425F1A /* FlowTest.swift */; };
 		0048E69D292EA527004008F0 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104732912B34A00425F1A /* FlowTest.swift */; };
 		0048E69E292EA52E004008F0 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* DeprecatedGameTest.swift */; };
+		005B6399297082AD0034E4FF /* QuizDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B6398297082AD0034E4FF /* QuizDelegate.swift */; };
 		00D104642912B25F00425F1A /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D104592912B25F00425F1A /* QuizEngine.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		0018907B291ED096005ED73D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		002BF9B429198F8A00F62490 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002BF9BB29198F8A00F62490 /* QuizEngine_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngine_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		005B6398297082AD0034E4FF /* QuizDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDelegate.swift; sourceTree = "<group>"; };
 		00D104592912B25F00425F1A /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D104632912B25F00425F1A /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D104732912B34A00425F1A /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				0018907B291ED096005ED73D /* Question.swift */,
 				001425BD29183387000CD481 /* Result.swift */,
 				001425BF29183390000CD481 /* Router.swift */,
+				005B6398297082AD0034E4FF /* QuizDelegate.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				0037C4C629199D80004937CA /* Result.swift in Sources */,
 				0037C4C729199D80004937CA /* DeprecatedGame.swift in Sources */,
 				0037C4C529199D80004937CA /* Flow.swift in Sources */,
+				005B6399297082AD0034E4FF /* QuizDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
