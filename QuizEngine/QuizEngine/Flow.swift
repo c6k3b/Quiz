@@ -22,7 +22,7 @@ private extension Flow {
     func delegateQuestionHandling(at index: Int) {
         if index < questions.endIndex {
             let question = questions[index]
-            delegate.handle(question: question, answerCallback: callback(for: question, at: index))
+            delegate.answer(for: question, completion: callback(for: question, at: index))
         } else {
             delegate.handle(result: result())
         }

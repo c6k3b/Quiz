@@ -126,9 +126,9 @@ class FlowTest: XCTestCase {
         var handledResult: Result<String, String>?
         var answerCallback: (String) -> Void = { _ in }
 
-        func handle(question: String, answerCallback: @escaping (String) -> Void) {
+        func answer(for question: String, completion: @escaping (String) -> Void) {
             handledQuestions.append(question)
-            self.answerCallback = answerCallback
+            self.answerCallback = completion
         }
 
         func handle(result: Result<String, String>) {
