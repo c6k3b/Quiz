@@ -50,14 +50,14 @@ class FlowTest: XCTestCase {
         XCTAssertEqual(  delegate.handledQuestions, ["Q1"])
     }
 
+    func test_startWithOneQuestion_doesNotCompleteQuiz() {
+        makeSUT(questions: ["Q1"]).start()
+        XCTAssertTrue(delegate.completedQuizzes.isEmpty)
+    }
+
     func test_startWithNoQuestions_delegatesResultHandling() {
         makeSUT(questions: []).start()
         XCTAssertEqual(delegate.handledResult!.answers, [:])
-    }
-
-    func test_startWithOneQuestion_doesNotDelegateResultHandling() {
-        makeSUT(questions: ["Q1"]).start()
-        XCTAssertNil(delegate.handledResult)
     }
 
     func test_startAndAnswerFirstQuestion_withTwoQuestions_doesNotDelegateResultHandling() {
@@ -124,6 +124,7 @@ class FlowTest: XCTestCase {
     private class DelegateSpy: QuizDelegate {
         var handledQuestions: [String] = []
         var handledResult: Result<String, String>?
+        var completedQuizzes = [[(String, String)]]()
         var answerCompletion: (String) -> Void = { _ in }
 
         func answer(for question: String, completion: @escaping (String) -> Void) {
