@@ -24,6 +24,12 @@ final class ResultsPresenter {
         }
     }
 
+    init(userAnswers: Answers, correctAnswers: Answers, scorer: @escaping Scorer) {
+        self.userAnswers = userAnswers
+        self.correctAnswers = correctAnswers
+        self.scorer = scorer
+    }
+
     init(
         result: Result<Question<String>, [String]>,
         questions: [Question<String>],
