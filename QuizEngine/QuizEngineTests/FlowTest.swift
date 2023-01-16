@@ -111,20 +111,6 @@ class FlowTest: XCTestCase {
         return sut
     }
 
-    private func assertEqual(
-        _ argument1: [(String, String)],
-        _ argument2: [(String, String)],
-        file: StaticString = #filePath,
-        line: UInt = #line
-    ) {
-        XCTAssertTrue(
-            argument1.elementsEqual(argument2, by: ==),
-            "\(argument1) is not equal to \(argument2)",
-            file: file,
-            line: line
-        )
-    }
-
     private class DelegateSpy: QuizDelegate {
         var questionsAsked: [String] = []
         var answerCompletions: [(String) -> Void] = []
