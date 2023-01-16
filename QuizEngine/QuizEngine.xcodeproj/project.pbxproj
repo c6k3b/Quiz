@@ -23,6 +23,7 @@
 		0048E69E292EA52E004008F0 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001425C12918342C000CD481 /* DeprecatedGameTest.swift */; };
 		005B6399297082AD0034E4FF /* QuizDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B6398297082AD0034E4FF /* QuizDelegate.swift */; };
 		008060C129709B9000772081 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008060C029709B9000772081 /* Quiz.swift */; };
+		009806F429754C4C00B9868E /* QuizDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B6398297082AD0034E4FF /* QuizDelegate.swift */; };
 		00D104642912B25F00425F1A /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D104592912B25F00425F1A /* QuizEngine.framework */; };
 		00FC3FBB297093E000B708A1 /* QuizTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC3FBA297093E000B708A1 /* QuizTest.swift */; };
 /* End PBXBuildFile section */
@@ -340,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0018907E291ED222005ED73D /* Question.swift in Sources */,
+				009806F429754C4C00B9868E /* QuizDelegate.swift in Sources */,
 				002BF9CF2919925D00F62490 /* Flow.swift in Sources */,
 				002BF9CC2919925D00F62490 /* DeprecatedGame.swift in Sources */,
 			);
