@@ -35,8 +35,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2", "Q3"])
 
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
 
         XCTAssertEqual(delegate.questionsAsked, ["Q1", "Q2", "Q3"])
     }
@@ -45,7 +45,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1"])
 
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
 
         XCTAssertEqual(  delegate.questionsAsked, ["Q1"])
     }
@@ -65,7 +65,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
 
         XCTAssertTrue(delegate.completedQuizzes.isEmpty)
     }
@@ -74,8 +74,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
 
         XCTAssertEqual(delegate.completedQuizzes.count, 1)
         assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
@@ -112,13 +112,14 @@ class FlowTest: XCTestCase {
 
     private class DelegateSpy: QuizDelegate {
         var questionsAsked: [String] = []
+        var answerCompletions: [(String) -> Void] = []
+
         var handledResult: Result<String, String>?
         var completedQuizzes = [[(String, String)]]()
-        var answerCompletion: (String) -> Void = { _ in }
 
         func answer(for question: String, completion: @escaping (String) -> Void) {
             questionsAsked.append(question)
-            self.answerCompletion = completion
+            answerCompletions.append(completion)
         }
 
         func didCompleteQuiz(withAnswers answers: [(question: String, answer: String)]) {
