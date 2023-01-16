@@ -125,6 +125,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		00322B942975C9F200FE9C6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0081802929138A630068EF40 /* Assets.xcassets */,
+				0081802E29138A630068EF40 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0081801429138A5F0068EF40 = {
 			isa = PBXGroup;
 			children = (
@@ -147,10 +156,11 @@
 		0081801F29138A600068EF40 /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
-				0096F8C92975C5C60003F273 /* Scoring */,
 				00DEF554292101E100536BDE /* Main */,
 				00DEF55B29210BFB00536BDE /* Presentation */,
+				00322B942975C9F200FE9C6C /* Resources */,
 				00DEF55E29210C8100536BDE /* Routing */,
+				0096F8C92975C5C60003F273 /* Scoring */,
 				00DEF5552921027A00536BDE /* UI */,
 			);
 			path = QuizApp;
@@ -189,8 +199,6 @@
 			children = (
 				0081802029138A600068EF40 /* AppDelegate.swift */,
 				00ADE618291B79A9007883CA /* IOSViewControllerFactory.swift */,
-				0081802929138A630068EF40 /* Assets.xcassets */,
-				0081802E29138A630068EF40 /* Info.plist */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -677,7 +685,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M8677N6B2G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QuizApp/Main/Info.plist;
+				INFOPLIST_FILE = QuizApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboar;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -711,7 +719,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M8677N6B2G;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QuizApp/Main/Info.plist;
+				INFOPLIST_FILE = QuizApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboar;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
