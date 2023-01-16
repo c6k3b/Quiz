@@ -36,13 +36,22 @@ private extension Flow {
 
     func answer(for question: Question, at index: Int) -> (Answer) -> Void {
         return { [weak self] answer in
-            self?.newAnswers.append((question, answer))
+            self?.newAnswers.replaceOrInsert((question, answer), at: index)
             self?.answers[question] = answer
             self?.delegateQuestionHandling(after: index)
         }
     }
 
-    private func result() -> Result<Question, Answer> {
+    func result() -> Result<Question, Answer> {
         return Result(answers: answers, score: scoring(answers))
+    }
+}
+
+private extension Array {
+    mutating func replaceOrInsert(_ element: Element, at index: Index) {
+        if index < count {
+            remove(at: index)
+        }
+        insert(element, at: index)
     }
 }
