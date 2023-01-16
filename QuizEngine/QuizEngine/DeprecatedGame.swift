@@ -1,6 +1,6 @@
 //  Created by aa on 11/6/22.
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Use QuizDelegate instead")
 public protocol Router {
     associatedtype Question: Hashable
     associatedtype Answer: Equatable
@@ -17,7 +17,7 @@ public struct Result<Question: Hashable, Answer> {
     public let score: Int
 }
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Use Quiz instead ")
 public class Game<Question, Answer, R: Router> {
     let flow: Any
 
@@ -26,7 +26,7 @@ public class Game<Question, Answer, R: Router> {
     }
 }
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Use Quiz.start instead")
 public func startGame<Question, Answer: Equatable, R: Router>(
     questions: [Question],
     router: R,
@@ -37,7 +37,7 @@ public func startGame<Question, Answer: Equatable, R: Router>(
     return Game(flow: flow)
 }
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Remove along with the deprecated game types")
 private class QuizDelegateToRouterAdapter<R: Router>: QuizDelegate {
     private let router: R
     private let correctAnswers: [R.Question: R.Answer]
