@@ -1,39 +1,42 @@
-class Flow<Delegate: QuizDelegate> {
-    typealias Question = Delegate.Question
-    typealias Answer = Delegate.Answer
+class Flow<Delegate: QuizDelegate, DataSource: QuizDataSource> {
+    typealias Question = DataSource.Question
+    typealias Answer = DataSource.Answer
 
     private let delegate: Delegate
+    private let dataSource: DataSource
+
     private let questions: [Question]
     private var answers: [(Question, Answer)] = []
 
-    init(questions: [Question], delegate: Delegate) {
+    init(questions: [Question], delegate: Delegate, dataSource: DataSource) {
         self.questions = questions
         self.delegate = delegate
+        self.dataSource = dataSource
     }
 
     func start() {
-        delegateQuestionHandling(at: questions.startIndex)
+        questionHandling(at: questions.startIndex)
     }
 }
 
 private extension Flow {
-    func delegateQuestionHandling(at index: Int) {
+    func questionHandling(at index: Int) {
         if index < questions.endIndex {
             let question = questions[index]
-            delegate.answer(for: question, completion: answer(for: question, at: index))
+            dataSource.answer(for: question, completion: answer(for: question, at: index))
         } else {
-            delegate.didCompleteQuiz(withAnswers: answers)
+            delegate.didCompleteQuiz(withAnswers: (answers as? [(Delegate.Question, Delegate.Answer)]) ?? [])
         }
     }
 
-    func delegateQuestionHandling(after index: Int) {
-        delegateQuestionHandling(at: questions.index(after: index))
+    func questionHandling(after index: Int) {
+        questionHandling(at: questions.index(after: index))
     }
 
     func answer(for question: Question, at index: Int) -> (Answer) -> Void {
         return { [weak self] answer in
             self?.answers.replaceOrInsert((question, answer), at: index)
-            self?.delegateQuestionHandling(after: index)
+            self?.questionHandling(after: index)
         }
     }
 }
