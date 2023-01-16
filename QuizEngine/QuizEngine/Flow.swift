@@ -25,7 +25,9 @@ private extension Flow {
             let question = questions[index]
             dataSource.answer(for: question, completion: answer(for: question, at: index))
         } else {
-            delegate.didCompleteQuiz(withAnswers: (answers as? [(Delegate.Question, Delegate.Answer)]) ?? [])
+            delegate.didCompleteQuiz(
+                withAnswers: (answers as? [(Delegate.Question, Delegate.Answer)]) ?? []
+            )
         }
     }
 

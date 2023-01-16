@@ -5,9 +5,17 @@ import UIKit
 import QuizEngine
 
 class IOSViewControllerFactory: ViewControllerFactory {
+    typealias Answers = [(question: Question<String>, answers: [String])]
+
     private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
-    private let correctAnswers: [Question<String>: [String]]
+    private let correctAnswers: () -> Answers
+
+    init(options: [Question<String>: [String]], correctAnswers: Answers) {
+        self.questions = correctAnswers.map { $0.question }
+        self.options = options
+        self.correctAnswers = { correctAnswers }
+    }
 
     init(
         questions: [Question<String>],
@@ -16,7 +24,11 @@ class IOSViewControllerFactory: ViewControllerFactory {
     ) {
         self.questions = questions
         self.options = options
-        self.correctAnswers = correctAnswers
+        self.correctAnswers = {
+            questions.map { question in
+                (question, correctAnswers[question]!)
+            }
+        }
     }
 
     func questionViewController(
@@ -77,9 +89,7 @@ class IOSViewControllerFactory: ViewControllerFactory {
             userAnswers: questions.map { question in
                 (question, result.answers[question]!)
             },
-            correctAnswers: questions.map { question in
-                (question, correctAnswers[question]!)
-            },
+            correctAnswers: correctAnswers(),
             scorer: { _, _ in result.score }
         )
         let controller = ResultsViewController(summary: presenter.summary, answers: presenter.presentableAnswers)
