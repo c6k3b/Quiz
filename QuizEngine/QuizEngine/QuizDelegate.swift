@@ -2,7 +2,7 @@
 //  Created by aa on 1/12/23.
 
 public protocol QuizDelegate: AnyObject {
-    associatedtype Question: Hashable
+    associatedtype Question
     associatedtype Answer
 
     func answer(for question: Question, completion: @escaping (Answer) -> Void)
