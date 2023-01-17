@@ -9,5 +9,5 @@ protocol ViewControllerFactory {
         answerCallback: @escaping ([String]) -> Void
     ) -> UIViewController
 
-    func resultViewController(for result: Result<Question<String>, [String]>) -> UIViewController
+    func resultsViewController(for result: Result<Question<String>, [String]>) -> UIViewController
 }

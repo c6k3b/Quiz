@@ -33,7 +33,7 @@ class NavigationControllerRouter: Router {
     }
 
     func routeTo(result: Result<Question<String>, [String]>) {
-        show(factory.resultViewController(for: result))
+        show(factory.resultsViewController(for: result))
     }
 
     private func show(_ viewController: UIViewController) {
