@@ -79,20 +79,34 @@ class IOSViewControllerFactoryTest: XCTestCase {
         )
     }
 
+    func makeSUT(
+        options: [Question<String>: [String]] = [:],
+        correctAnswers: [(Question<String>, [String])] = []
+    ) -> IOSViewControllerFactory {
+        .init(options: options, correctAnswers: correctAnswers)
+    }
+
     func makeQuestionsController(question: Question<String> = Question.singleAnswer("")) -> QuestionViewController {
-        return (makeSUT(options: [question: options]).questionViewController(for: question, answerCallback: { _ in })
-         as? QuestionViewController)!
+        (makeSUT(options: [question: options], correctAnswers: [:])
+            .questionViewController(for: question, answerCallback: { _ in }) as? QuestionViewController)!
     }
 
     func makeResults() -> (controller: ResultsViewController, presenter: ResultsPresenter) {
-        let questions = [singleAnswerQuestion, multipleAnswerQuestion]
-        let correctAnswers = [singleAnswerQuestion: ["A1"], multipleAnswerQuestion: ["A1", "A2"]]
-        let userAnswers = [singleAnswerQuestion: ["A1"], multipleAnswerQuestion: ["A1", "A2"]]
-        let result = Result.make(answers: userAnswers, score: 2)
+        let userAnswers = [(singleAnswerQuestion, ["A1"]), (multipleAnswerQuestion, ["A1", "A2"])]
+        let correctAnswers = [(singleAnswerQuestion, ["A1"]), (multipleAnswerQuestion, ["A1", "A2"])]
+
+        let result = Result.make(
+            answers: [singleAnswerQuestion: ["A1"], multipleAnswerQuestion: ["A1", "A2"]],
+            score: 2
+        )
 
         let sut = makeSUT(correctAnswers: correctAnswers)
+        let presenter = ResultsPresenter(
+            userAnswers: userAnswers,
+            correctAnswers: correctAnswers,
+            scorer: { _, _ in result.score }
+        )
         let controller = sut.resultViewController(for: result) as? ResultsViewController
-        let presenter = ResultsPresenter(result: result, questions: questions, correctAnswers: correctAnswers)
 
         return (controller!, presenter)
     }
