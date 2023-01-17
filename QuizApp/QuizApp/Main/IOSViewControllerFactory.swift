@@ -70,7 +70,7 @@ final class IOSViewControllerFactory: ViewControllerFactory {
         return controller
     }
 
-    func resultsViewConroller(for userAnswers: Answers) -> UIViewController {
+    func resultsViewController(for userAnswers: Answers) -> UIViewController {
         let presenter = ResultsPresenter(
             userAnswers: userAnswers,
             correctAnswers: correctAnswers,
