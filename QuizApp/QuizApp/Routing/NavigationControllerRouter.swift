@@ -29,16 +29,8 @@ class NavigationControllerRouter: QuizDelegate, QuizDataSource {
         }
     }
 
-    func routeTo(question: Question<String>, answerCallback: @escaping ([String]) -> Void) {
-        answer(for: question, completion: answerCallback)
-    }
-
     func didCompleteQuiz(withAnswers answers: [(question: Question<String>, answer: [String])]) {
         show(factory.resultsViewController(for: answers))
-    }
-
-    func routeTo(result: Result<Question<String>, [String]>) {
-        show(factory.resultsViewController(for: result))
     }
 
     private func show(_ viewController: UIViewController) {
