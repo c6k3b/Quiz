@@ -6,9 +6,6 @@ import QuizEngine
 @testable import QuizApp
 
 final class QuestionPresenterTest: XCTestCase {
-    let question1 = Question.singleAnswer("A1")
-    let question2 = Question.multipleAnswer("A2")
-
     func test_title_forFirstQuestion_formatTitleForIndex() {
         let sut = QuestionPresenter(questions: [question1, question2], question: question1)
 
@@ -26,4 +23,8 @@ final class QuestionPresenterTest: XCTestCase {
 
         XCTAssertEqual(sut.title, "")
     }
+
+    // MARK: - Helpers
+    private let question1 = Question.singleAnswer("A1")
+    private let question2 = Question.multipleAnswer("A2")
 }

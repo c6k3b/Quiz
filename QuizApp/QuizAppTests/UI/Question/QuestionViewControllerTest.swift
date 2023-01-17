@@ -70,7 +70,7 @@ final class QuestionViewControllerTest: XCTestCase {
     }
 
     // MARK: - Helpers
-    func makeSUT(
+    private func makeSUT(
         question: String = "",
         options: [String] = [],
         allowsMultipleSelection: Bool = false,

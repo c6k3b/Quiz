@@ -33,13 +33,15 @@ final class ResultViewControllerTest: XCTestCase {
     }
 
     // MARK: - Helpers
-    func makeSUT(summary: String = "", answers: [PresentableAnswer] = []) -> ResultsViewController {
+    private func makeSUT(summary: String = "", answers: [PresentableAnswer] = []) -> ResultsViewController {
         let sut = ResultsViewController(summary: summary, answers: answers)
         _ = sut.view
         return sut
     }
 
-    func makeAnswer(question: String = "", answer: String = "", wrongAnswer: String? = nil) -> PresentableAnswer {
+    private func makeAnswer(
+        question: String = "", answer: String = "", wrongAnswer: String? = nil
+    ) -> PresentableAnswer {
         return PresentableAnswer(question: question, answer: answer, wrongAnswer: wrongAnswer)
     }
 }
