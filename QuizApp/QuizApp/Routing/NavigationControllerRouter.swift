@@ -3,7 +3,7 @@
 import UIKit
 import QuizEngine
 
-class NavigationControllerRouter: Router, QuizDelegate {
+class NavigationControllerRouter: Router, QuizDelegate, QuizDataSource {
     private let navigationController: UINavigationController
     private let factory: ViewControllerFactory
 
