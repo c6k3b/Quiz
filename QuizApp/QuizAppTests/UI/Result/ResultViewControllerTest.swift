@@ -1,7 +1,7 @@
 import XCTest
 @testable import QuizApp
 
-class ResultViewControllerTest: XCTestCase {
+final class ResultViewControllerTest: XCTestCase {
     func test_viewDidLoad_renderSummary() {
         XCTAssertEqual(makeSUT(summary: "a summary").headerLabel.text, "a summary")
     }

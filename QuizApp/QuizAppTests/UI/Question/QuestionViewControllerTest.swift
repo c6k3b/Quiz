@@ -1,7 +1,7 @@
 import XCTest
 @testable import QuizApp
 
-class QuestionViewControllerTest: XCTestCase {
+final class QuestionViewControllerTest: XCTestCase {
     func test_viewDidLoad_rendersQuestionHeaderText() {
         XCTAssertEqual(makeSUT(question: "Q1").headerLabel.text, "Q1")
     }

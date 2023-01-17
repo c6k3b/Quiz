@@ -5,7 +5,7 @@ import UIKit
 import QuizEngine
 @testable import QuizApp
 
-class NavigationControllerRouterTest: XCTestCase {
+final class NavigationControllerRouterTest: XCTestCase {
     let navigationController = NonAnimatedNavigationController()
     let factory = ViewControllerFactoryStub()
 

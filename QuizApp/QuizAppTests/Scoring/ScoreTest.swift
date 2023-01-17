@@ -4,7 +4,7 @@
 import XCTest
 @testable import QuizApp
 
-class ScoreTest: XCTestCase {
+final class ScoreTest: XCTestCase {
     func test_noAnswers_scoresZero() {
         XCTAssertEqual(BasicScore.score(for: [String](), comparingTo: [String]()), 0)
     }

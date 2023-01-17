@@ -5,7 +5,7 @@ import UIKit
 import QuizEngine
 @testable import QuizApp
 
-class IOSViewControllerFactoryTest: XCTestCase {
+final class IOSViewControllerFactoryTest: XCTestCase {
     let singleAnswerQuestion = Question.singleAnswer("Q1")
     let multipleAnswerQuestion = Question.multipleAnswer("Q1")
     let options = ["A1", "A2"]

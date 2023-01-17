@@ -5,7 +5,7 @@ import XCTest
 import QuizEngine
 @testable import QuizApp
 
-class QuestionPresenterTest: XCTestCase {
+final class QuestionPresenterTest: XCTestCase {
     let question1 = Question.singleAnswer("A1")
     let question2 = Question.multipleAnswer("A2")
 

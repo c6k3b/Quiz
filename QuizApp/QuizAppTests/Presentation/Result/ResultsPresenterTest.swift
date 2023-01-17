@@ -5,7 +5,7 @@ import XCTest
 import QuizEngine
 @testable import QuizApp
 
-class ResultsPresenterTest: XCTestCase {
+final class ResultsPresenterTest: XCTestCase {
     func test_title_returnsFormattedTitle() {
         XCTAssertEqual(makeSUT().title, "Result")
     }
