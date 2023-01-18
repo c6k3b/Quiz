@@ -13,11 +13,7 @@ public final class Quiz {
         delegate: Delegate,
         dataSource: DataSource
     ) -> Quiz where Delegate.Answer: Equatable {
-        let flow = Flow(
-            questions: questions,
-            delegate: delegate,
-            dataSource: dataSource
-        )
+        let flow = Flow(questions: questions, delegate: delegate, dataSource: dataSource)
         flow.start()
         return Quiz(flow: flow)
     }
