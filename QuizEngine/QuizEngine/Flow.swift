@@ -1,4 +1,4 @@
-class Flow<Delegate: QuizDelegate, DataSource: QuizDataSource> {
+final class Flow<Delegate: QuizDelegate, DataSource: QuizDataSource> {
     typealias Question = DataSource.Question
     typealias Answer = DataSource.Answer
 
