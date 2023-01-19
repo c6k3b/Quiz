@@ -1,7 +1,7 @@
 //  IOSSwiftUIViewControllerFactory.swift
 //  Created by aa on 1/19/23.
 
-import UIKit
+import SwiftUI
 import QuizEngine
 
 final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
@@ -34,12 +34,14 @@ final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
     ) -> UIViewController {
         switch question {
         case .singleAnswer(let value):
-            return questionViewController(
-                for: question,
-                value: value,
-                options: options,
-                allowsMultipleSelection: false,
-                answerCallback: answerCallback
+            let presenter = QuestionPresenter(questions: questions, question: question)
+            return UIHostingController(
+                rootView: SingleAnswerQuestion(
+                    title: presenter.title,
+                    question: value,
+                    options: options,
+                    selection: { answerCallback([$0]) }
+                )
             )
         case .multipleAnswer(let value):
             return questionViewController(
