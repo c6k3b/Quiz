@@ -9,7 +9,7 @@ final class IOSUIKitViewControllerFactoryTest: XCTestCase {
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
         let controller = makeQuestionsController(question: singleAnswerQuestion)
         let presenter = QuestionPresenter(questions: questions, question: singleAnswerQuestion)
-        XCTAssertEqual(makeQuestionsController(question: singleAnswerQuestion).title, presenter.title)
+        XCTAssertEqual(controller.title, presenter.title)
     }
 
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
