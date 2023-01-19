@@ -35,6 +35,8 @@
 		00D9B0CD297933BE0034D2D9 /* IOSSwiftUIViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0CC297933BE0034D2D9 /* IOSSwiftUIViewControllerFactory.swift */; };
 		00D9B0D12979BBDD0034D2D9 /* MultipleSelectionStoreTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D02979BBDD0034D2D9 /* MultipleSelectionStoreTest.swift */; };
 		00D9B0D32979C4700034D2D9 /* MultipleSelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D22979C4700034D2D9 /* MultipleSelectionStore.swift */; };
+		00D9B0D52979C7D20034D2D9 /* MultipleAnswerQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D42979C7D20034D2D9 /* MultipleAnswerQuestion.swift */; };
+		00D9B0D72979C8A40034D2D9 /* MultipleTextSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D62979C8A40034D2D9 /* MultipleTextSelectionCell.swift */; };
 		00E33047297745E6009D1BDA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E33046297745E6009D1BDA /* QuizEngine.framework */; };
 		00E33048297745E6009D1BDA /* QuizEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 00E33046297745E6009D1BDA /* QuizEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EF5D79291CF71A00277C4E /* ResultsPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EF5D78291CF71A00277C4E /* ResultsPresenterTest.swift */; };
@@ -101,6 +103,8 @@
 		00D9B0CC297933BE0034D2D9 /* IOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
 		00D9B0D02979BBDD0034D2D9 /* MultipleSelectionStoreTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStoreTest.swift; sourceTree = "<group>"; };
 		00D9B0D22979C4700034D2D9 /* MultipleSelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionStore.swift; sourceTree = "<group>"; };
+		00D9B0D42979C7D20034D2D9 /* MultipleAnswerQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleAnswerQuestion.swift; sourceTree = "<group>"; };
+		00D9B0D62979C8A40034D2D9 /* MultipleTextSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextSelectionCell.swift; sourceTree = "<group>"; };
 		00E33046297745E6009D1BDA /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		00EF5D78291CF71A00277C4E /* ResultsPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPresenterTest.swift; sourceTree = "<group>"; };
 		00EF5D7E291CFCA700277C4E /* ResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsPresenter.swift; sourceTree = "<group>"; };
@@ -152,10 +156,12 @@
 		0054C05829787C9600ABDC4E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				0054C05A29787D1400ABDC4E /* SingleAnswerQuestion.swift */,
-				00D9B0C6297924590034D2D9 /* QuestionHeader.swift */,
-				00D9B0C8297926890034D2D9 /* SingleTextSelectionCell.swift */,
+				00D9B0D42979C7D20034D2D9 /* MultipleAnswerQuestion.swift */,
 				00D9B0D22979C4700034D2D9 /* MultipleSelectionStore.swift */,
+				00D9B0D62979C8A40034D2D9 /* MultipleTextSelectionCell.swift */,
+				00D9B0C6297924590034D2D9 /* QuestionHeader.swift */,
+				0054C05A29787D1400ABDC4E /* SingleAnswerQuestion.swift */,
+				00D9B0C8297926890034D2D9 /* SingleTextSelectionCell.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				00ADE619291B79A9007883CA /* IOSUIKitViewControllerFactory.swift in Sources */,
 				00D9B0C9297926890034D2D9 /* SingleTextSelectionCell.swift in Sources */,
 				0081802129138A600068EF40 /* AppDelegate.swift in Sources */,
+				00D9B0D52979C7D20034D2D9 /* MultipleAnswerQuestion.swift in Sources */,
 				0066174529172B25006D68B2 /* WrongAnswerCell.swift in Sources */,
 				0054C05B29787D1400ABDC4E /* SingleAnswerQuestion.swift in Sources */,
 				00D9B0CD297933BE0034D2D9 /* IOSSwiftUIViewControllerFactory.swift in Sources */,
@@ -586,6 +593,7 @@
 				00EF5D83291D651400277C4E /* QuestionPresenter.swift in Sources */,
 				00D9B0C7297924590034D2D9 /* QuestionHeader.swift in Sources */,
 				0066174329172B17006D68B2 /* CorrectAnswerCell.swift in Sources */,
+				00D9B0D72979C8A40034D2D9 /* MultipleTextSelectionCell.swift in Sources */,
 				0066173F29172A45006D68B2 /* UITableViewExtensions.swift in Sources */,
 				00EF5D7F291CFCA700277C4E /* ResultsPresenter.swift in Sources */,
 			);
