@@ -23,7 +23,8 @@ struct SingleAnswerQuestion: View {
             }.padding()
 
             ForEach(options, id: \.self) { option in
-                Button(action: {}) {
+                Button {
+                } label: {
                     HStack {
                         Circle()
                             .stroke(Color.secondary, lineWidth: 2.5)
@@ -40,7 +41,6 @@ struct SingleAnswerQuestion: View {
 
             Spacer()
         }
-
     }
 }
 
@@ -58,7 +58,6 @@ struct SingleAnswerQuestion_Previews: PreviewProvider {
                 ],
                 selection: { _ in }
             )
-
 
             SingleAnswerQuestion(
                 title: "1 of 2",
