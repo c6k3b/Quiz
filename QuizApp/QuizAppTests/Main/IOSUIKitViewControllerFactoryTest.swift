@@ -5,7 +5,7 @@ import UIKit
 import QuizEngine
 @testable import QuizApp
 
-final class IOSViewControllerFactoryTest: XCTestCase {
+final class IOSUIKitViewControllerFactoryTest: XCTestCase {
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
         let presenter = QuestionPresenter(
             questions: [singleAnswerQuestion, multipleAnswerQuestion],
@@ -71,7 +71,7 @@ final class IOSViewControllerFactoryTest: XCTestCase {
     private func makeSUT(
         options: [Question<String>: [String]] = [:],
         correctAnswers: [(Question<String>, [String])] = []
-    ) -> IOSViewControllerFactory {
+    ) -> IOSUIKitViewControllerFactory {
         .init(options: options, correctAnswers: correctAnswers)
     }
 
