@@ -6,9 +6,16 @@ import XCTest
 struct MultipleSelectionStore {
     var options: [MultipleSelectionOption]
     var canSubmit: Bool { !options.filter(\.isSelected).isEmpty }
+    private let handler: ([String]) -> Void
 
-    internal init(options: [String]) {
+    internal init(options: [String], handler: @escaping ([String]) -> Void = { _ in }) {
         self.options = options.map { MultipleSelectionOption(text: $0) }
+        self.handler = handler
+    }
+
+    func submit() {
+        guard canSubmit else { return }
+        handler(options.filter(\.isSelected).map(\.text))
     }
 }
 
@@ -45,5 +52,23 @@ final class MultipleSelectionStoreTest: XCTestCase {
 
         sut.options[1].select()
         XCTAssertTrue(sut.canSubmit)
+    }
+
+    func test_notifiesHandlerWithSelectedOptions() {
+        var submittedOptions = [[String]]()
+        var sut = MultipleSelectionStore(options: ["o0", "o1"]) {
+            submittedOptions.append($0)
+        }
+
+        sut.submit()
+        XCTAssertEqual(submittedOptions, [])
+
+        sut.options[0].select()
+        sut.submit()
+        XCTAssertEqual(submittedOptions, [["o0"]])
+
+        sut.options[1].select()
+        sut.submit()
+        XCTAssertEqual(submittedOptions, [["o0"], ["o0", "o1"]])
     }
 }
