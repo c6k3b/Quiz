@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0037C4CD29199E9A004937CA /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */; };
 		0037C4CF2919A021004937CA /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */; };
+		0054C05B29787D1400ABDC4E /* SingleAnswerQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054C05A29787D1400ABDC4E /* SingleAnswerQuestion.swift */; };
 		00661739291703F2006D68B2 /* TableViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00661738291703F2006D68B2 /* TableViewHelpers.swift */; };
 		0066173B29170E27006D68B2 /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0066173A29170E27006D68B2 /* CorrectAnswerCell.xib */; };
 		0066173D29171A50006D68B2 /* WrongAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0066173C29171A50006D68B2 /* WrongAnswerCell.xib */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
+		0054C05A29787D1400ABDC4E /* SingleAnswerQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAnswerQuestion.swift; sourceTree = "<group>"; };
 		00661738291703F2006D68B2 /* TableViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelpers.swift; sourceTree = "<group>"; };
 		0066173A29170E27006D68B2 /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 		0066173C29171A50006D68B2 /* WrongAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrongAnswerCell.xib; sourceTree = "<group>"; };
@@ -122,6 +124,25 @@
 				0081802E29138A630068EF40 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		0054C05729787C8B00ABDC4E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				00DEF55929210BA300536BDE /* Helpers */,
+				00DEF55A29210BCB00536BDE /* Launch */,
+				00DEF55629210B5800536BDE /* Question */,
+				00DEF55729210B6300536BDE /* Result */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		0054C05829787C9600ABDC4E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				0054C05A29787D1400ABDC4E /* SingleAnswerQuestion.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		0081801429138A5F0068EF40 = {
@@ -196,10 +217,8 @@
 		00DEF5552921027A00536BDE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				00DEF55929210BA300536BDE /* Helpers */,
-				00DEF55A29210BCB00536BDE /* Launch */,
-				00DEF55629210B5800536BDE /* Question */,
-				00DEF55729210B6300536BDE /* Result */,
+				0054C05829787C9600ABDC4E /* SwiftUI */,
+				0054C05729787C8B00ABDC4E /* UIKit */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -524,6 +543,7 @@
 				00ADE619291B79A9007883CA /* IOSViewControllerFactory.swift in Sources */,
 				0081802129138A600068EF40 /* AppDelegate.swift in Sources */,
 				0066174529172B25006D68B2 /* WrongAnswerCell.swift in Sources */,
+				0054C05B29787D1400ABDC4E /* SingleAnswerQuestion.swift in Sources */,
 				008075E92916EA7F0077A416 /* ResultsViewController.swift in Sources */,
 				0066174129172ACA006D68B2 /* PresentableAnswer.swift in Sources */,
 				00EF5D83291D651400277C4E /* QuestionPresenter.swift in Sources */,
