@@ -13,7 +13,7 @@ final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
 
     private var questions: [Question<String>] { correctAnswers.map { $0.question } }
 
-    init(options: [Question<String>: [String]], correctAnswers: Answers, playAgain: @escaping () -> Void = {}) {
+    init(options: [Question<String>: [String]], correctAnswers: Answers, playAgain: @escaping () -> Void) {
         self.options = options
         self.correctAnswers = correctAnswers
         self.playAgain = playAgain

@@ -18,7 +18,7 @@ struct MultipleAnswerQuestion: View {
 
             Spacer()
 
-            RoundedButton(title: "Submit", action: store.submit)
+            RoundedButton(title: "Submit", isEnabled: store.canSubmit, action: store.submit)
                 .padding()
         }
     }

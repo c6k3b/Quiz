@@ -8,7 +8,7 @@ struct RoundedButton: View {
     let isEnabled: Bool
     let action: () -> Void
 
-    init(title: String, isEnabled: Bool = false, action: @escaping () -> Void) {
+    init(title: String, isEnabled: Bool = true, action: @escaping () -> Void) {
         self.title = title
         self.isEnabled = isEnabled
         self.action = action
@@ -35,7 +35,7 @@ struct RoundedButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             RoundedButton(title: "Submit", action: {})
-            RoundedButton(title: "Submit", isEnabled: true, action: {})
+            RoundedButton(title: "Submit", isEnabled: false, action: {})
         }
         .previewLayout(.sizeThatFits)
     }
