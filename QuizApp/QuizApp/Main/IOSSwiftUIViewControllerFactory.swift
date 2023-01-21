@@ -55,32 +55,20 @@ final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
         }
     }
 
-    private func questionViewController(
-        for question: Question<String>,
-        value: String,
-        options: [String],
-        allowsMultipleSelection: Bool,
-        answerCallback: @escaping ([String]) -> Void
-    ) -> QuestionViewController {
-        let presenter = QuestionPresenter(questions: questions, question: question)
-        let controller = QuestionViewController(
-            question: value,
-            options: options,
-            allowsMultipleSelection: allowsMultipleSelection,
-            selection: answerCallback
-        )
-        controller.title = presenter.title
-        return controller
-    }
-
     func resultsViewController(for userAnswers: Answers) -> UIViewController {
         let presenter = ResultsPresenter(
             userAnswers: userAnswers,
             correctAnswers: correctAnswers,
             scorer: BasicScore.score
         )
-        let controller = ResultsViewController(summary: presenter.summary, answers: presenter.presentableAnswers)
-        controller.title = presenter.title
-        return controller
+
+        return UIHostingController(
+            rootView: ResultView(
+                title: presenter.title,
+                summary: presenter.summary,
+                answers: presenter.presentableAnswers,
+                playAgain: {}
+            )
+        )
     }
 }
