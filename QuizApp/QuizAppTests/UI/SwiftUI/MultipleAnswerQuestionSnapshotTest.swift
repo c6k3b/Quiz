@@ -7,22 +7,24 @@ import SwiftUI
 
 final class MultipleAnswerQuestionSnapshotTest: XCTestCase {
     func test() {
-        let sut = MultipleAnswerQuestion(
-            title: "A title",
-            question: "A question",
-            store: .init(
-                options: ["Option 1", "Option 2"],
-                handler: { _ in }
+        let sut = UIHostingController(
+            rootView: MultipleAnswerQuestion(
+                title: "A title",
+                question: "A question",
+                store: .init(
+                    options: ["Option 1", "Option 2"],
+                    handler: { _ in }
+                )
             )
         )
 
 //        record(
-//            snapshot: UIHostingController(rootView: sut).snapshot(for: .iPhone13(style: .light)),
+//            snapshot: sut.snapshot(for: .iPhone13(style: .light)),
 //            named: "two_options"
 //        )
 
         assert(
-            snapshot: UIHostingController(rootView: sut).snapshot(for: .iPhone13(style: .light)),
+            snapshot: sut.snapshot(for: .iPhone13(style: .light)),
             named: "two_options"
         )
     }
