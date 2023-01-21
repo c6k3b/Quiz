@@ -32,10 +32,11 @@ struct MultipleTextSelectionCell: View {
 
 struct MultipleTextSelectionCell_Previews: PreviewProvider {
     static var previews: some View {
-        MultipleTextSelectionCell(option: .constant(.init(text: "A text", isSelected: false)))
-            .previewLayout(.sizeThatFits)
+        VStack {
+            MultipleTextSelectionCell(option: .constant(.init(text: "A text", isSelected: false)))
 
-        MultipleTextSelectionCell(option: .constant(.init(text: "A text", isSelected: true)))
-            .previewLayout(.sizeThatFits)
+            MultipleTextSelectionCell(option: .constant(.init(text: "A text", isSelected: true)))
+        }
+        .previewLayout(.sizeThatFits)
     }
 }

@@ -30,12 +30,12 @@ struct SingleAnswerQuestion_Previews: PreviewProvider {
             SingleAnswerQuestionTestView()
 
             SingleAnswerQuestionTestView()
-            .preferredColorScheme(.dark)
-            .environment(\.sizeCategory, .extraExtraExtraLarge)
+                .preferredColorScheme(.dark)
+                .environment(\.sizeCategory, .extraExtraExtraLarge)
         }
     }
 
-    struct SingleAnswerQuestionTestView: View {
+    private struct SingleAnswerQuestionTestView: View {
         @State var selection: String = "none"
 
         var body: some View {
