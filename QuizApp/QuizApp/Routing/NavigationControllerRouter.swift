@@ -35,6 +35,7 @@ final class NavigationControllerRouter: QuizDelegate, QuizDataSource {
 
     private func show(_ viewController: UIViewController) {
         navigationController.pushViewController(viewController, animated: true)
+//        navigationController.setViewControllers([viewController], animated: true)
     }
 }
 

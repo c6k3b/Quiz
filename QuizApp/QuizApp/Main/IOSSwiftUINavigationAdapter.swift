@@ -1,27 +1,45 @@
-//  IOSSwiftUIViewControllerFactory.swift
+//  IOSSwiftUINavigationAdapter.swift
 //  Created by aa on 1/19/23.
 
 import SwiftUI
 import QuizEngine
 
-final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
-    typealias Answers = [(question: Question<String>, answer: [String])]
+final class IOSSwiftUINavigationAdapter: QuizDelegate, QuizDataSource {
+    typealias Question = QuizEngine.Question<String>
+    typealias Answer = [String]
+    typealias Answers = [(question: Question, answer: Answer)]
 
-    private let options: [Question<String>: [String]]
+    private let navigation: UINavigationController
+    private let options: [Question: Answer]
     private let correctAnswers: Answers
     private let playAgain: () -> Void
+    private var questions: [Question] { correctAnswers.map { $0.question } }
 
-    private var questions: [Question<String>] { correctAnswers.map { $0.question } }
-
-    init(options: [Question<String>: [String]], correctAnswers: Answers, playAgain: @escaping () -> Void) {
+    init(
+        navigation: UINavigationController,
+        options: [Question: Answer],
+        correctAnswers: Answers,
+        playAgain: @escaping () -> Void
+    ) {
+        self.navigation = navigation
         self.options = options
         self.correctAnswers = correctAnswers
         self.playAgain = playAgain
     }
 
+    func answer(for question: Question, completion: @escaping (Answer) -> Void) {
+        show(questionViewController(for: question, answerCallback: completion))
+    }
+
+    func didCompleteQuiz(withAnswers answers: Answers) {
+        show(resultsViewController(for: answers))
+    }
+}
+
+private extension IOSSwiftUINavigationAdapter {
     func questionViewController(
-        for question: Question<String>,
-        answerCallback: @escaping ([String]) -> Void
+        for question: Question,
+        answerCallback: @escaping (Answer) -> Void
     ) -> UIViewController {
         guard let options = options[question] else {
             fatalError("Couldn't find options for \(question)")
@@ -29,10 +47,10 @@ final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
         return questionViewController(for: question, options: options, answerCallback: answerCallback)
     }
 
-    private func questionViewController(
-        for question: Question<String>,
-        options: [String],
-        answerCallback: @escaping ([String]) -> Void
+    func questionViewController(
+        for question: Question,
+        options: Answer,
+        answerCallback: @escaping (Answer) -> Void
     ) -> UIViewController {
         let presenter = QuestionPresenter(questions: questions, question: question)
 
@@ -72,5 +90,9 @@ final class IOSSwiftUIViewControllerFactory: ViewControllerFactory {
                 playAgain: playAgain
             )
         )
+    }
+
+    func show(_ controller: UIViewController) {
+        navigation.pushViewController(controller, animated: true)
     }
 }

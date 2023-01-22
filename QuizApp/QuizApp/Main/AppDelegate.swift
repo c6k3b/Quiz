@@ -39,14 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let options = [question1: options1, question2: options2]
         let correctAnswers = [(question1, [option3]), (question2, [option4, option6])]
 
-        let factory = IOSSwiftUIViewControllerFactory(
+        let adapter = IOSSwiftUINavigationAdapter(
+            navigation: navigationController,
             options: options,
             correctAnswers: correctAnswers,
             playAgain: startNewQuiz
         )
-        //        let factory = IOSUIKitViewControllerFactory(options: options, correctAnswers: correctAnswers)
-        let router = NavigationControllerRouter(navigationController, factory: factory)
 
-        quiz = Quiz.start(questions: questions, delegate: router, dataSource: router)
+        quiz = Quiz.start(questions: questions, delegate: adapter, dataSource: adapter)
     }
 }

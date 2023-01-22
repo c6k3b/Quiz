@@ -27,7 +27,20 @@ final class IOSUIKitViewControllerFactory: ViewControllerFactory {
         return questionViewController(for: question, options: options, answerCallback: answerCallback)
     }
 
-    private func questionViewController(
+    func resultsViewController(for userAnswers: Answers) -> UIViewController {
+        let presenter = ResultsPresenter(
+            userAnswers: userAnswers,
+            correctAnswers: correctAnswers,
+            scorer: BasicScore.score
+        )
+        let controller = ResultsViewController(summary: presenter.summary, answers: presenter.presentableAnswers)
+        controller.title = presenter.title
+        return controller
+    }
+}
+
+private extension IOSUIKitViewControllerFactory {
+    func questionViewController(
         for question: Question<String>,
         options: [String],
         answerCallback: @escaping ([String]) -> Void
@@ -49,10 +62,10 @@ final class IOSUIKitViewControllerFactory: ViewControllerFactory {
                 allowsMultipleSelection: true,
                 answerCallback: answerCallback
             )
-    }
+        }
     }
 
-    private func questionViewController(
+   func questionViewController(
         for question: Question<String>,
         value: String,
         options: [String],
@@ -66,17 +79,6 @@ final class IOSUIKitViewControllerFactory: ViewControllerFactory {
             allowsMultipleSelection: allowsMultipleSelection,
             selection: answerCallback
         )
-        controller.title = presenter.title
-        return controller
-    }
-
-    func resultsViewController(for userAnswers: Answers) -> UIViewController {
-        let presenter = ResultsPresenter(
-            userAnswers: userAnswers,
-            correctAnswers: correctAnswers,
-            scorer: BasicScore.score
-        )
-        let controller = ResultsViewController(summary: presenter.summary, answers: presenter.presentableAnswers)
         controller.title = presenter.title
         return controller
     }
