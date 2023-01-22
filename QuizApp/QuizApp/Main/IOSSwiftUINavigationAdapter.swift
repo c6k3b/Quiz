@@ -9,19 +9,19 @@ final class IOSSwiftUINavigationAdapter: QuizDelegate, QuizDataSource {
     typealias Answer = [String]
     typealias Answers = [(question: Question, answer: Answer)]
 
-    private let navigation: UINavigationController
+    private let show: (UIViewController) -> Void
     private let options: [Question: Answer]
     private let correctAnswers: Answers
     private let playAgain: () -> Void
     private var questions: [Question] { correctAnswers.map { $0.question } }
 
     init(
-        navigation: UINavigationController,
+        show: @escaping (UIViewController) -> Void,
         options: [Question: Answer],
         correctAnswers: Answers,
         playAgain: @escaping () -> Void
     ) {
-        self.navigation = navigation
+        self.show = show
         self.options = options
         self.correctAnswers = correctAnswers
         self.playAgain = playAgain
@@ -90,9 +90,5 @@ private extension IOSSwiftUINavigationAdapter {
                 playAgain: playAgain
             )
         )
-    }
-
-    func show(_ controller: UIViewController) {
-        navigation.setViewControllers([controller], animated: true)
     }
 }

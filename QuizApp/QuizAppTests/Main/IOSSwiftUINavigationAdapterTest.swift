@@ -116,10 +116,10 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 
     private func makeSUT(
         playAgain: @escaping () -> Void = {}
-    ) -> (IOSSwiftUINavigationAdapter, NonAnimatedNavigationController) {
-        let navigation = NonAnimatedNavigationController()
+    ) -> (IOSSwiftUINavigationAdapter, UINavigationController) {
+        let navigation = UINavigationController()
         let sut = IOSSwiftUINavigationAdapter(
-            navigation: navigation,
+            show: { [navigation] in navigation.setViewControllers([$0], animated: false) },
             options: options,
             correctAnswers: correctAnswers,
             playAgain: playAgain
@@ -161,9 +161,9 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
         return controller.map { ($0.rootView, presenter) }
     }
 
-    private class NonAnimatedNavigationController: UINavigationController {
-        override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
-            super.setViewControllers(viewControllers, animated: false)
-        }
-    }
+//    private class NonAnimatedNavigationController: UINavigationController {
+//        override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
+//            super.setViewControllers(viewControllers, animated: false)
+//        }
+//    }
 }
