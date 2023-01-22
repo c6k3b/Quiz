@@ -79,25 +79,27 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
         XCTAssertEqual(playAgainCount, 2)
     }
 
-    func test_answerForQuestion_pushesQuestionsToNavigationStack() {
+    func test_answerForQuestion_replacesNavigationStack() {
         let (sut, navigation) = makeSUT()
 
         sut.answer(for: singleAnswerQuestion) { _ in }
-        sut.answer(for: multipleAnswerQuestion) { _ in }
-
-        XCTAssertEqual(navigation.viewControllers.count, 2)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers.first is UIHostingController<SingleAnswerQuestion>)
+
+        sut.answer(for: multipleAnswerQuestion) { _ in }
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers.last is UIHostingController<MultipleAnswerQuestion >)
     }
 
-    func test_didCompleteQuiz_pushesResultToNavigationStack() {
+    func test_didCompleteQuiz_replacesNavigationStack() {
         let (sut, navigation) = makeSUT()
 
         sut.didCompleteQuiz(withAnswers: correctAnswers)
-        sut.didCompleteQuiz(withAnswers: correctAnswers)
-
-        XCTAssertEqual(navigation.viewControllers.count, 2)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers.first is UIHostingController<ResultView>)
+
+        sut.didCompleteQuiz(withAnswers: correctAnswers)
+        XCTAssertEqual(navigation.viewControllers.count, 1)
         XCTAssertTrue(navigation.viewControllers.last is UIHostingController<ResultView>)
     }
 
@@ -160,8 +162,8 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
     }
 
     private class NonAnimatedNavigationController: UINavigationController {
-        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-            super.pushViewController(viewController, animated: false)
+        override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
+            super.setViewControllers(viewControllers, animated: false)
         }
     }
 }
