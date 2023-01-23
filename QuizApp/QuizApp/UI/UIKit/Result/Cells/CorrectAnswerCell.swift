@@ -1,8 +1,8 @@
-//  Created by aa on 11/6/22.
+// Copyright © 2023 aa. All rights reserved.
 
 import UIKit
 
 class CorrectAnswerCell: UITableViewCell {
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var answerLabel: UILabel!
+	@IBOutlet weak var questionLabel: UILabel!
+	@IBOutlet weak var answerLabel: UILabel!
 }

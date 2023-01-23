@@ -1,7 +1,7 @@
-//  Created by aa on 11/6/22.
+// Copyright © 2023 aa. All rights reserved.
 
 struct PresentableAnswer: Equatable {
-    let question: String
-    let answer: String
-    let wrongAnswer: String?
+	let question: String
+	let answer: String
+	let wrongAnswer: String?
 }

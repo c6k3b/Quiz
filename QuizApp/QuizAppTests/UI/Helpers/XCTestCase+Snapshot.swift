@@ -1,6 +1,4 @@
-//
-// Copyright © Essential Developer. All rights reserved.
-//
+// Copyright © 2023 aa. All rights reserved.
 
 import XCTest
 
@@ -11,11 +9,11 @@ extension XCTestCase {
 
 		guard let storedSnapshotData = try? Data(contentsOf: snapshotURL) else {
 			XCTFail(
-                "Failed to load stored snapshot at URL: \(snapshotURL)." +
-                "Use the `record` method to store a snapshot before asserting.",
-                file: file,
-                line: line
-            )
+				"Failed to load stored snapshot at URL: \(snapshotURL)." +
+				"Use the `record` method to store a snapshot before asserting.",
+				file: file,
+				line: line
+			)
 			return
 		}
 
@@ -25,12 +23,12 @@ extension XCTestCase {
 			try? snapshotData?.write(to: temporarySnapshotURL)
 
 			XCTFail(
-                "New snapshot does not match stored snapshot." +
-                " New snapshot URL: \(temporarySnapshotURL)," +
-                " Stored snapshot URL: \(snapshotURL)",
-                file: file,
-                line: line
-            )
+				"New snapshot does not match stored snapshot." +
+				" New snapshot URL: \(temporarySnapshotURL)," +
+				" Stored snapshot URL: \(snapshotURL)",
+				file: file,
+				line: line
+			)
 		}
 	}
 
@@ -43,7 +41,6 @@ extension XCTestCase {
 				at: snapshotURL.deletingLastPathComponent(),
 				withIntermediateDirectories: true
 			)
-
 			try snapshotData?.write(to: snapshotURL)
 			XCTFail("Record succeeded - use `assert` to compare the snapshot from now on.", file: file, line: line)
 		} catch {
@@ -52,7 +49,7 @@ extension XCTestCase {
 	}
 
 	private func makeSnapshotURL(named name: String, file: StaticString) -> URL {
-		return URL(fileURLWithPath: String(describing: file))
+		.init(fileURLWithPath: String(describing: file))
 			.deletingLastPathComponent()
 			.appendingPathComponent("snapshots")
 			.appendingPathComponent("\(name).png")
@@ -63,7 +60,6 @@ extension XCTestCase {
 			XCTFail("Failed to generate PNG data representation from snapshot", file: file, line: line)
 			return nil
 		}
-
 		return data
 	}
 }

@@ -1,5 +1,4 @@
-//  DelegateSpy.swift
-//  Created by aa on 1/16/23.
+// Copyright © 2023 aa. All rights reserved.
 
 import QuizEngine
 

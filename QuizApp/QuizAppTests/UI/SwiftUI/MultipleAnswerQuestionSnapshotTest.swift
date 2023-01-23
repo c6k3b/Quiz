@@ -1,5 +1,4 @@
-//  MultipleAnswerQuestionSnapshotTest.swift
-//  Created by aa on 1/20/23.
+// Copyright © 2023 aa. All rights reserved.
 
 import XCTest
 @testable import QuizApp
@@ -24,5 +23,5 @@ final class MultipleAnswerQuestionSnapshotTest: XCTestCase {
 			snapshot: sut.snapshot(for: .iPhone13(style: .light)),
 			named: "two_options"
 		)
-    }
+	}
 }

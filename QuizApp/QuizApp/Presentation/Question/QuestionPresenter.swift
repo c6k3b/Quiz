@@ -1,13 +1,13 @@
-//  QuestionPresenter.swift
-//  Created by aa on 11/10/22.
+// Copyright © 2023 aa. All rights reserved.
+
 import QuizEngine
 
 struct QuestionPresenter {
-    let questions: [Question<String>]
-    let question: Question<String>
+	let questions: [Question<String>]
+	let question: Question<String>
 
-    var title: String {
-        guard let index = questions.firstIndex(of: question) else { return "" }
-        return "\(index + 1) of \(questions.count)"
-    }
+	var title: String {
+		guard let index = questions.firstIndex(of: question) else { return "" }
+		return "\(index + 1) of \(questions.count)"
+	}
 }

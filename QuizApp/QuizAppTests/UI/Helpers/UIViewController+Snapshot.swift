@@ -1,8 +1,5 @@
-//
-// Copyright © Essential Developer. All rights reserved.
-//
+// Copyright © 2023 aa. All rights reserved.
 
-import UIKit
 import SwiftUI
 
 extension UIViewController {
@@ -18,8 +15,8 @@ struct SnapshotConfiguration {
 	let traitCollection: UITraitCollection
 
 	static func iPhone13(
-        style: UIUserInterfaceStyle,
-        contentSize: UIContentSizeCategory = .medium
+		style: UIUserInterfaceStyle,
+		contentSize: UIContentSizeCategory = .medium
     ) -> SnapshotConfiguration {
 		return SnapshotConfiguration(
 			size: CGSize(width: 390, height: 844),
@@ -37,7 +34,7 @@ struct SnapshotConfiguration {
 				.init(displayGamut: .P3),
 				.init(userInterfaceStyle: style)
 			])
-        )
+		)
 	}
 }
 
