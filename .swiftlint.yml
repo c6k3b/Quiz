@@ -5,12 +5,13 @@ identifier_name:
     warning: 40
   excluded:
     - id
+    - i
 
 analyzer_rules:
   - unused_import
 
 cyclomatic_complexity:
-  ignores_case_statements: true
+  ignores_case_statements: false
 
 excluded:
   - Carthage
@@ -64,7 +65,7 @@ opt_in_rules:
   - vertical_whitespace_opening_braces
   - yoda_condition
 
-line_length: 120
+line_length: 160
 
 force_cast: warning
 force_try: warning
