@@ -4,9 +4,16 @@
 import QuizEngine
 
 final class DelegateSpy: QuizDelegate {
-    var completedQuizzes = [[(String, String)]]()
+	var questionsAsked: [String] = []
+	var answerCompletions: [(String) -> Void] = []
+	var completedQuizzes = [[(String, String)]]()
 
-    func didCompleteQuiz(withAnswers answers: [(question: String, answer: String)]) {
-        completedQuizzes.append(answers)
-    }
+	func answer(for question: String, completion: @escaping (String) -> Void) {
+		questionsAsked.append(question)
+		answerCompletions.append(completion)
+	}
+
+	func didCompleteQuiz(withAnswers answers: [(question: String, answer: String)]) {
+		completedQuizzes.append(answers)
+	}
 }

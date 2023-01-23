@@ -1,19 +1,16 @@
 // Copyright © 2023 aa. All rights reserved.
 
-final class Flow<Delegate: QuizDelegate, DataSource: QuizDataSource> {
-	typealias Question = DataSource.Question
-	typealias Answer = DataSource.Answer
+final class Flow<Delegate: QuizDelegate> {
+	typealias Question = Delegate.Question
+	typealias Answer = Delegate.Answer
 
 	private let delegate: Delegate
-	private let dataSource: DataSource
-
 	private let questions: [Question]
 	private var answers: [(Question, Answer)] = []
 
-	init(questions: [Question], delegate: Delegate, dataSource: DataSource) {
+	init(questions: [Question], delegate: Delegate) {
 		self.questions = questions
 		self.delegate = delegate
-		self.dataSource = dataSource
 	}
 
 	func start() {
@@ -25,11 +22,9 @@ private extension Flow {
 	func questionHandling(at index: Int) {
 		if index < questions.endIndex {
 			let question = questions[index]
-			dataSource.answer(for: question, completion: answer(for: question, at: index))
+			delegate.answer(for: question, completion: answer(for: question, at: index))
 		} else {
-			delegate.didCompleteQuiz(
-				withAnswers: (answers as? [(Delegate.Question, Delegate.Answer)]) ?? []
-			)
+			delegate.didCompleteQuiz(withAnswers: (answers))
 		}
 	}
 

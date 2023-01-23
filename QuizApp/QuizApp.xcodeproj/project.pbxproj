@@ -11,6 +11,7 @@
 		000CD06E297A6E1000AD1FA2 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0DB297A69360034D2D9 /* UIViewController+Snapshot.swift */; };
 		000CD06F297A6E1600AD1FA2 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0DA297A69360034D2D9 /* UIImage+TestHelpers.swift */; };
 		000CD072297A72AD00AD1FA2 /* two_options.png in Resources */ = {isa = PBXBuildFile; fileRef = 000CD071297A72AD00AD1FA2 /* two_options.png */; };
+		00285212297E852A00037EB8 /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00285211297E852A00037EB8 /* QuizEngine.framework */; };
 		0037C4CD29199E9A004937CA /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */; };
 		0037C4CF2919A021004937CA /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */; };
 		0052F99B297BC56B0048F44F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052F99A297BC56B0048F44F /* RoundedButton.swift */; };
@@ -45,8 +46,6 @@
 		00D9B0D52979C7D20034D2D9 /* MultipleAnswerQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D42979C7D20034D2D9 /* MultipleAnswerQuestion.swift */; };
 		00D9B0D72979C8A40034D2D9 /* MultipleTextSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0D62979C8A40034D2D9 /* MultipleTextSelectionCell.swift */; };
 		00D9B0E0297A69D60034D2D9 /* MultipleAnswerQuestionSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0DF297A69D60034D2D9 /* MultipleAnswerQuestionSnapshotTest.swift */; };
-		00E33047297745E6009D1BDA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E33046297745E6009D1BDA /* QuizEngine.framework */; };
-		00E33048297745E6009D1BDA /* QuizEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 00E33046297745E6009D1BDA /* QuizEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EF5D79291CF71A00277C4E /* ResultsPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EF5D78291CF71A00277C4E /* ResultsPresenterTest.swift */; };
 		00EF5D7F291CFCA700277C4E /* ResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EF5D7E291CFCA700277C4E /* ResultsPresenter.swift */; };
 		00EF5D81291D641E00277C4E /* QuestionPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EF5D80291D641E00277C4E /* QuestionPresenterTest.swift */; };
@@ -65,22 +64,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		00E33049297745E6009D1BDA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				00E33048297745E6009D1BDA /* QuizEngine.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		000CD071297A72AD00AD1FA2 /* two_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two_options.png; sourceTree = "<group>"; };
+		0028520D297E7F1100037EB8 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		00285211297E852A00037EB8 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		0052F99A297BC56B0048F44F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -135,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E33047297745E6009D1BDA /* QuizEngine.framework in Frameworks */,
+				00285212297E852A00037EB8 /* QuizEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +473,8 @@
 		00E33045297745E6009D1BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00285211297E852A00037EB8 /* QuizEngine.framework */,
+				0028520D297E7F1100037EB8 /* QuizEngine.framework */,
 				00E33046297745E6009D1BDA /* QuizEngine.framework */,
 			);
 			name = Frameworks;
@@ -502,7 +491,6 @@
 				0081801929138A600068EF40 /* Sources */,
 				0081801A29138A600068EF40 /* Frameworks */,
 				0081801B29138A600068EF40 /* Resources */,
-				00E33049297745E6009D1BDA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -517,7 +505,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0081804A29138A630068EF40 /* Build configuration list for PBXNativeTarget "QuizAppTests" */;
 			buildPhases = (
-				00322B952975D9A900FE9C6C /* SwiftLint */,
 				0081802F29138A630068EF40 /* Sources */,
 				0081803029138A630068EF40 /* Frameworks */,
 				0081803129138A630068EF40 /* Resources */,
@@ -596,25 +583,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00322B952975D9A900FE9C6C /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 		0062F5D1296DDC9700EC821A /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -693,6 +661,7 @@
 /* Begin PBXTargetDependency section */
 		0081803529138A630068EF40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 0081801C29138A600068EF40 /* QuizApp */;
 			targetProxy = 0081803429138A630068EF40 /* PBXContainerItemProxy */;
 		};
@@ -832,7 +801,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8677N6B2G;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuizApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -866,7 +835,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M8677N6B2G;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuizApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

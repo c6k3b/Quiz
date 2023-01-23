@@ -16,6 +16,7 @@ cyclomatic_complexity:
 excluded:
   - Carthage
   - Pods
+  - line_length
 
 disabled_rules:
   - inclusive_language
@@ -65,7 +66,12 @@ opt_in_rules:
   - vertical_whitespace_opening_braces
   - yoda_condition
 
-line_length: 160
+line_length:
+  warning: 160
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
 
 force_cast: warning
 force_try: warning

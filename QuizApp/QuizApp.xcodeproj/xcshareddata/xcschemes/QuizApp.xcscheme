@@ -22,10 +22,10 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0081803229138A630068EF40"
@@ -52,17 +52,6 @@
                BuildableName = "QuizAppTests.xctest"
                BlueprintName = "QuizAppTests"
                ReferencedContainer = "container:QuizApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "002BF9BA29198F8A00F62490"
-               BuildableName = "QuizEngine_iOSTests.xctest"
-               BlueprintName = "QuizEngine_iOSTests"
-               ReferencedContainer = "container:../QuizEngine/QuizEngine.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
