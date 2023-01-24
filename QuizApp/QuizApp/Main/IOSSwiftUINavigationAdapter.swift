@@ -3,14 +3,14 @@
 import SwiftUI
 import QuizEngine
 
-class QuizNavigationStore {
+class QuizNavigationStore: ObservableObject {
 	enum CurrentView {
 		case single(SingleAnswerQuestion)
 		case multiple(MultipleAnswerQuestion)
 		case result(ResultView)
 	}
 	
-	var currentView: CurrentView?
+	@Published var currentView: CurrentView?
 }
 
 final class IOSSwiftUINavigationAdapter: QuizDelegate {

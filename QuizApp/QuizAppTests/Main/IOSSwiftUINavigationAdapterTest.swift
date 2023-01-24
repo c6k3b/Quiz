@@ -78,7 +78,7 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 		XCTAssertEqual(playAgainCount, 2)
 	}
 
-	func test_answerForQuestion_replacesNavigationStack() {
+	func test_answerForQuestion_replacesCurrentView() {
 		let (sut, navigation) = makeSUT()
 
 		sut.answer(for: singleAnswerQuestion) { _ in }
@@ -88,7 +88,7 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 		XCTAssertNotNil(navigation.multipleCurrentView)
 	}
 
-	func test_didCompleteQuiz_replacesNavigationStack() {
+	func test_didCompleteQuiz_replacesCurrentView() {
 		let (sut, navigation) = makeSUT()
 
 		sut.didCompleteQuiz(withAnswers: correctAnswers)
@@ -96,6 +96,25 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 
 		sut.didCompleteQuiz(withAnswers: correctAnswers)
 		XCTAssertNotNil(navigation.resultCurrentView)
+	}
+	
+	func test_publishesNavigationChanges() {
+		let (sut, navigation) = makeSUT()
+		var navigationChangeCount = 0
+		let cancelable = navigation.objectWillChange.sink { navigationChangeCount += 1 }
+		
+		XCTAssertEqual(navigationChangeCount, 0)
+		
+		sut.answer(for: singleAnswerQuestion) { _ in }
+		XCTAssertEqual(navigationChangeCount, 1)
+		
+		sut.answer(for: multipleAnswerQuestion) { _ in }
+		XCTAssertEqual(navigationChangeCount, 2)
+		
+		sut.didCompleteQuiz(withAnswers: correctAnswers)
+		XCTAssertEqual(navigationChangeCount, 3)
+		
+		cancelable.cancel()
 	}
 
 	// MARK: - Helpers
