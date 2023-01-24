@@ -3,16 +3,6 @@
 import SwiftUI
 import QuizEngine
 
-class QuizNavigationStore: ObservableObject {
-	enum CurrentView {
-		case single(SingleAnswerQuestion)
-		case multiple(MultipleAnswerQuestion)
-		case result(ResultView)
-	}
-	
-	@Published var currentView: CurrentView?
-}
-
 final class IOSSwiftUINavigationAdapter: QuizDelegate {
 	typealias Question = QuizEngine.Question<String>
 	typealias Answer = [String]
@@ -41,37 +31,41 @@ final class IOSSwiftUINavigationAdapter: QuizDelegate {
 		guard let options = options[question] else { fatalError("Couldn't find options for \(question)") }
 		let presenter = QuestionPresenter(questions: questions, question: question)
 		
-		switch question {
-			case .singleAnswer(let value):
-				navigation.currentView = .single(
-					SingleAnswerQuestion(
-						title: presenter.title,
-						question: value,
-						options: options,
-						selection: { completion([$0]) }
+		withAnimation {
+			switch question {
+				case .singleAnswer(let value):
+					navigation.currentView = .single(
+						SingleAnswerQuestion(
+							title: presenter.title,
+							question: value,
+							options: options,
+							selection: { completion([$0]) }
+						)
 					)
-				)
-			case .multipleAnswer(let value):
-				navigation.currentView = .multiple(
-					MultipleAnswerQuestion(
-						title: presenter.title,
-						question: value,
-						store: .init(options: options, handler: completion)
+				case .multipleAnswer(let value):
+					navigation.currentView = .multiple(
+						MultipleAnswerQuestion(
+							title: presenter.title,
+							question: value,
+							store: .init(options: options, handler: completion)
+						)
 					)
-				)
+			}
 		}
 	}
 	
 	func didCompleteQuiz(withAnswers answers: Answers) {
 		let presenter = ResultsPresenter(userAnswers: answers, correctAnswers: correctAnswers, scorer: BasicScore.score)
 		
-		navigation.currentView = .result(
-			ResultView(
-				title: presenter.title,
-				summary: presenter.summary,
-				answers: presenter.presentableAnswers,
-				playAgain: playAgain
+		withAnimation {
+			navigation.currentView = .result(
+				ResultView(
+					title: presenter.title,
+					summary: presenter.summary,
+					answers: presenter.presentableAnswers,
+					playAgain: playAgain
+				)
 			)
-		)
+		}
 	}
 }
