@@ -38,28 +38,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let correctAnswers = [(question1, [option3]), (question2, [option4, option6])]
 		
 		// MARK: - SwiftUI Implementation
-//		let adapter = IOSSwiftUINavigationAdapter(
-//			show: { [navigationController] in
-//			$0.modalPresentationStyle = .fullScreen
-//			navigationController.topModal.present($0, animated: true)
-//			},
-//			options: options,
-//			correctAnswers: correctAnswers,
-//			playAgain: startNewQuiz
-//		)
-//
-//		quiz = Quiz.start(questions: questions, delegate: adapter, dataSource: adapter)
+		let adapter = IOSSwiftUINavigationAdapter(
+			navigation: QuizNavigationStore(),
+			options: options,
+			correctAnswers: correctAnswers,
+			playAgain: startNewQuiz
+		)
+
+		quiz = Quiz.start(questions: questions, delegate: adapter)
 
 		// MARK: - UIKit Implementation
-		let factory = IOSUIKitViewControllerFactory(options: options, correctAnswers: correctAnswers)
-		let router = NavigationControllerRouter(navigationController, factory: factory)
-		
-		quiz = Quiz.start(questions: questions, delegate: router)
-	}
-}
-
-private extension UIViewController {
-	var topModal: UIViewController {
-		presentedViewController?.topModal ?? self
+//		let factory = IOSUIKitViewControllerFactory(options: options, correctAnswers: correctAnswers)
+//		let router = NavigationControllerRouter(navigationController, factory: factory)
+//
+//		quiz = Quiz.start(questions: questions, delegate: router)
 	}
 }

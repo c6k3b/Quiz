@@ -111,10 +111,10 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 		[(singleAnswerQuestion, ["A1"]), (multipleAnswerQuestion, ["A4", "A5"])]
 	}
 
-	private func makeSUT(playAgain: @escaping () -> Void = {}) -> (IOSSwiftUINavigationAdapter, UINavigationController) {
-		let navigation = UINavigationController()
+	private func makeSUT(playAgain: @escaping () -> Void = {}) -> (IOSSwiftUINavigationAdapter, QuizNavigationStore) {
+		let navigation = QuizNavigationStore()
 		let sut = IOSSwiftUINavigationAdapter(
-			show: { [navigation] in navigation.setViewControllers([$0], animated: false) },
+			navigation: navigation,
 			options: options,
 			correctAnswers: correctAnswers,
 			playAgain: playAgain
@@ -151,16 +151,19 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 	}
 }
 
-private extension UINavigationController {
+private extension QuizNavigationStore {
 	var singleCurrentView: SingleAnswerQuestion? {
-		(topViewController as? UIHostingController<SingleAnswerQuestion>)?.rootView
+		if case let .single(view) = currentView { return view }
+		return nil
 	}
 	
 	var multipleCurrentView: MultipleAnswerQuestion? {
-		(topViewController as? UIHostingController<MultipleAnswerQuestion>)?.rootView
+		if case let .multiple(view) = currentView { return view }
+		return nil
 	}
 	
 	var resultCurrentView: ResultView? {
-		(topViewController as? UIHostingController<ResultView>)?.rootView
+		if case let .result(view) = currentView { return view }
+		return nil
 	}
 }
