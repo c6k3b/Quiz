@@ -5,24 +5,38 @@ import QuizEngine
 
 struct BasicQuiz {
 	let questions: [Question<String>]
+	let options: [Question<String> : [String]]
+}
+
+struct NonEmptyOptions {
+	let head: String
+	let tail: [String]
 }
 
 struct BasicQuizBuilder {
 	private let questions: [Question<String>]
+	private let options: [Question<String> : [String]]
 	
-	init(singleAnswerQuestion: String) {
-		questions = [.singleAnswer(singleAnswerQuestion)]
+	init(singleAnswerQuestion: String, options: NonEmptyOptions) {
+		let question = Question.singleAnswer(singleAnswerQuestion)
+		let answers = [options.head] + options.tail
+		
+		self.questions = [question]
+		self.options = [question: answers]
 	}
 	
 	func build() -> BasicQuiz {
-		BasicQuiz(questions: questions)
+		BasicQuiz(questions: questions, options: options)
 	}
 }
 
 class BasicQuizBuilderTest: XCTestCase {
 	func test_initWithSingleAnswerQuestion() {
-		let sut = BasicQuizBuilder(singleAnswerQuestion: "Q1")
+		let sut = BasicQuizBuilder(singleAnswerQuestion: "Q1", options: NonEmptyOptions(head: "A1", tail: ["A2", "A3"]))
 		
-		XCTAssertEqual(sut.build().questions, [.singleAnswer("Q1")])
+		let result = sut.build()
+		
+		XCTAssertEqual(result.questions, [.singleAnswer("Q1")])
+		XCTAssertEqual(result.options, [.singleAnswer("Q1"): ["A1", "A2", "A3"]])
 	}
 }
