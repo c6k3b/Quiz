@@ -110,7 +110,7 @@ class BasicQuizBuilderTest: XCTestCase {
 		)
 	}
 	
-	func test_addWithSingleAnswerQuestion() throws {
+	func test_addSingleAnswerQuestion() throws {
 		var sut = try BasicQuizBuilder(
 			singleAnswerQuestion: "Q1",
 			options: NonEmptyOptions(head: "A1", tail: ["A2", "A3"]),
@@ -139,7 +139,7 @@ class BasicQuizBuilderTest: XCTestCase {
 		])
 	}
 	
-	func test_addWithSingleAnswerQuestion_duplicateOptions_throw() throws {
+	func test_addSingleAnswerQuestion_duplicateOptions_throw() throws {
 		var sut = try BasicQuizBuilder(
 			singleAnswerQuestion: "Q1",
 			options: NonEmptyOptions(head: "A1", tail: ["A2", "A3"]),
@@ -156,7 +156,7 @@ class BasicQuizBuilderTest: XCTestCase {
 		)
 	}
 	
-	func test_addWithSingleAnswerQuestion_missingAnswerInOptions_throw() throws {
+	func test_addSingleAnswerQuestion_missingAnswerInOptions_throw() throws {
 		var sut = try BasicQuizBuilder(
 			singleAnswerQuestion: "Q1",
 			options: NonEmptyOptions(head: "A1", tail: ["A2", "A3"]),
@@ -173,7 +173,7 @@ class BasicQuizBuilderTest: XCTestCase {
 		)
 	}
 	
-	func test_addWithSingleAnswerQuestion_duplicateQuestion_throw() throws {
+	func test_addSingleAnswerQuestion_duplicateQuestion_throw() throws {
 		var sut = try BasicQuizBuilder(
 			singleAnswerQuestion: "Q1",
 			options: NonEmptyOptions(head: "A1", tail: ["A2", "A3"]),
