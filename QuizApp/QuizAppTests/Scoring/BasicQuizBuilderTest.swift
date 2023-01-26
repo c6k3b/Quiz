@@ -17,9 +17,9 @@ struct NonEmptyOptions {
 }
 
 struct BasicQuizBuilder {
-	private var questions: [Question<String>]
-	private var options: [Question<String> : [String]]
-	private var correctAnswers: [(Question<String>, [String])]
+	private var questions: [Question<String>] = []
+	private var options: [Question<String> : [String]] = [:]
+	private var correctAnswers: [(Question<String>, [String])] = []
 	
 	enum AddingError: Equatable, Error {
 		case duplicatedOptions([String])
@@ -28,20 +28,7 @@ struct BasicQuizBuilder {
 	}
 	
 	init(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws {
-		let question = Question.singleAnswer(singleAnswerQuestion)
-		let options = options.all
-		
-		guard options.contains(answer) else {
-			throw AddingError.missingAnswerInOptions(answer: [answer], options: options)
-		}
-		
-		guard Set(options).count == options.count else {
-			throw AddingError.duplicatedOptions(options )
-		}
-		
-		self.questions = [question]
-		self.options = [question: options]
-		self.correctAnswers = [(question, [answer])]
+		try add(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
 	}
 	
 	private init(questions: [Question<String>], options: [Question<String> : [String]], correctAnswers: [(Question<String>, [String])]) {
@@ -51,44 +38,16 @@ struct BasicQuizBuilder {
 	}
 	
 	mutating func add(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws {
-		let question = Question.singleAnswer(singleAnswerQuestion)
-		let options = options.all
-
-		guard !questions.contains(question) else {
-			throw AddingError.duplicateQuestion(question)
-		}
-		
-		guard options.contains(answer) else {
-			throw AddingError.missingAnswerInOptions(answer: [answer], options: options)
-		}
-
-		guard Set(options).count == options.count else {
-			throw AddingError.duplicatedOptions(options )
-		}
-
-		var newOptions = self.options
-		newOptions[question] = options
-		
-		self.questions += [question]
-		self.options = newOptions
-		self.correctAnswers += [(question, [answer])]
+		self = try adding(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
 	}
 	
 	func adding(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws -> BasicQuizBuilder {
 		let question = Question.singleAnswer(singleAnswerQuestion)
 		let options = options.all
 		
-		guard !questions.contains(question) else {
-			throw AddingError.duplicateQuestion(question)
-		}
-		
-		guard options.contains(answer) else {
-			throw AddingError.missingAnswerInOptions(answer: [answer], options: options)
-		}
-		
-		guard Set(options).count == options.count else {
-			throw AddingError.duplicatedOptions(options )
-		}
+		guard !questions.contains(question) else { throw AddingError.duplicateQuestion(question) }
+		guard options.contains(answer) else { throw AddingError.missingAnswerInOptions(answer: [answer], options: options) }
+		guard Set(options).count == options.count else { throw AddingError.duplicatedOptions(options) }
 		
 		var newOptions = self.options
 		newOptions[question] = options
