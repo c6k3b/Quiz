@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0000C47729752D6300379470 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C47629752D6300379470 /* Assertions.swift */; };
 		0000C47929752E2300379470 /* DelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000C47829752E2300379470 /* DelegateSpy.swift */; };
-		0018907C291ED096005ED73D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018907B291ED096005ED73D /* Question.swift */; };
 		0037C4C529199D80004937CA /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104752912B51100425F1A /* Flow.swift */; };
 		0037C4CB29199DC9004937CA /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D104732912B34A00425F1A /* FlowTest.swift */; };
 		005B6399297082AD0034E4FF /* QuizDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B6398297082AD0034E4FF /* QuizDelegate.swift */; };
@@ -31,7 +30,6 @@
 /* Begin PBXFileReference section */
 		0000C47629752D6300379470 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 		0000C47829752E2300379470 /* DelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateSpy.swift; sourceTree = "<group>"; };
-		0018907B291ED096005ED73D /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		005B6398297082AD0034E4FF /* QuizDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDelegate.swift; sourceTree = "<group>"; };
 		008060C029709B9000772081 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		00D104592912B25F00425F1A /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				00D104752912B51100425F1A /* Flow.swift */,
-				0018907B291ED096005ED73D /* Question.swift */,
 				008060C029709B9000772081 /* Quiz.swift */,
 				005B6398297082AD0034E4FF /* QuizDelegate.swift */,
 			);
@@ -218,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0018907C291ED096005ED73D /* Question.swift in Sources */,
 				008060C129709B9000772081 /* Quiz.swift in Sources */,
 				0037C4C529199D80004937CA /* Flow.swift in Sources */,
 				005B6399297082AD0034E4FF /* QuizDelegate.swift in Sources */,
@@ -300,7 +296,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -360,7 +356,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -397,6 +393,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuizEngine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -433,6 +430,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuizEngine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -461,7 +459,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuizEngineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -490,7 +488,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuizEngineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

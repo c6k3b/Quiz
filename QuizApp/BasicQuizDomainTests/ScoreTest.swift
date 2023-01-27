@@ -1,7 +1,7 @@
 // Copyright © 2023 aa. All rights reserved.
 
 import XCTest
-@testable import QuizApp
+@testable import BasicQuizDomain
 
 final class ScoreTest: XCTestCase {
 	func test_noAnswers_scoresZero() {

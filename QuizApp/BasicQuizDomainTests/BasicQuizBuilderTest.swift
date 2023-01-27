@@ -1,8 +1,7 @@
 // Copyright © 2023 aa. All rights reserved.
 
 import XCTest
-import QuizEngine
-import QuizApp
+import BasicQuizDomain
 
 class BasicQuizBuilderTest: XCTestCase {	
 	// MARK: - Single Answer Question

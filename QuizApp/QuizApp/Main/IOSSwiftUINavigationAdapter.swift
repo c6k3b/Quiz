@@ -2,9 +2,10 @@
 
 import SwiftUI
 import QuizEngine
+import BasicQuizDomain
 
 final class IOSSwiftUINavigationAdapter: QuizDelegate {
-	typealias Question = QuizEngine.Question<String>
+	typealias Question = BasicQuizDomain.Question<String>
 	typealias Answer = [String]
 	typealias Answers = [(question: Question, answer: Answer)]
 	
@@ -55,7 +56,11 @@ final class IOSSwiftUINavigationAdapter: QuizDelegate {
 	}
 	
 	func didCompleteQuiz(withAnswers answers: Answers) {
-		let presenter = ResultsPresenter(userAnswers: answers, correctAnswers: correctAnswers, scorer: BasicScore.score)
+		let presenter = ResultsPresenter(
+			userAnswers: answers,
+			correctAnswers: correctAnswers,
+			scorer: BasicScore.score
+		)
 		
 		withAnimation {
 			navigation.currentView = .result(

@@ -1,7 +1,7 @@
 //  Created by aa on 11/8/22.
 
 import UIKit
-import QuizEngine
+import BasicQuizDomain
 
 protocol ViewControllerFactory {
     typealias Answers = [(question: Question<String>, answer: [String])]

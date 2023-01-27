@@ -1,7 +1,7 @@
 // Copyright © 2023 aa. All rights reserved.
 
 import XCTest
-import QuizEngine
+import BasicQuizDomain
 @testable import QuizApp
 
 final class QuestionPresenterTest: XCTestCase {

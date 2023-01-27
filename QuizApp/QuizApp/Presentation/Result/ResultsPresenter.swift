@@ -1,7 +1,7 @@
 //  ResultsPresenter.swift
 //  Created by aa on 11/10/22.
 
-import QuizEngine
+import BasicQuizDomain
 
 final class ResultsPresenter {
     typealias Answers = [(question: Question<String>, answer: [String])]

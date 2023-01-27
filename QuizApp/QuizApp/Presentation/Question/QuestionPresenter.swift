@@ -1,6 +1,6 @@
 // Copyright © 2023 aa. All rights reserved.
 
-import QuizEngine
+import BasicQuizDomain
 
 struct QuestionPresenter {
 	let questions: [Question<String>]
