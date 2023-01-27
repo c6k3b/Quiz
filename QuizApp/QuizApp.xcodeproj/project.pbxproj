@@ -12,7 +12,6 @@
 		000CD06E297A6E1000AD1FA2 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9B0DB297A69360034D2D9 /* UIViewController+Snapshot.swift */; };
 		000CD072297A72AD00AD1FA2 /* two_options.png in Resources */ = {isa = PBXBuildFile; fileRef = 000CD071297A72AD00AD1FA2 /* two_options.png */; };
 		0010F82429844C9F008809F3 /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F82329844C9F008809F3 /* QuizEngine.framework */; };
-		0010F82529844C9F008809F3 /* QuizEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F82329844C9F008809F3 /* QuizEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0037C4CD29199E9A004937CA /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */; };
 		0037C4CF2919A021004937CA /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */; };
 		0052F99B297BC56B0048F44F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052F99A297BC56B0048F44F /* RoundedButton.swift */; };
@@ -68,25 +67,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		0010F82729844C9F008809F3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0010F82529844C9F008809F3 /* QuizEngine.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0006778829811B41003B2612 /* BasicQuizBuilderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicQuizBuilderTest.swift; sourceTree = "<group>"; };
 		000CD071297A72AD00AD1FA2 /* two_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two_options.png; sourceTree = "<group>"; };
 		0010F82329844C9F008809F3 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0010F82629844C9F008809F3 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0037C4CC29199E9A004937CA /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		0037C4CE2919A021004937CA /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		0052F99A297BC56B0048F44F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -107,7 +91,8 @@
 		0081802929138A630068EF40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0081802C29138A630068EF40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0081802E29138A630068EF40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0081803329138A630068EF40 /* QuizAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuizAppTests.xctest; path = "/Users/aa/Projects/_Githubbed/Quiz/QuizApp/build/Debug-iphoneos/QuizAppTests.xctest"; sourceTree = "<absolute>"; };
+		008CCB3E29844DF5008D7EA6 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QuizApp.app; path = "/Users/aa/Projects/_Githubbed/Quiz/QuizApp/build/Debug-iphoneos/QuizApp.app"; sourceTree = "<absolute>"; };
+		008CCB3F29844DF5008D7EA6 /* QuizAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuizAppTests.xctest; path = "/Users/aa/Projects/_Githubbed/Quiz/QuizApp/build/Debug-iphoneos/QuizAppTests.xctest"; sourceTree = "<absolute>"; };
 		0096F8C72975C4E10003F273 /* ScoreTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTest.swift; sourceTree = "<group>"; };
 		0096F8CA2975C5D20003F273 /* BasicScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScore.swift; sourceTree = "<group>"; };
 		00ADE618291B79A9007883CA /* IOSUIKitViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSUIKitViewControllerFactory.swift; sourceTree = "<group>"; };
@@ -228,7 +213,6 @@
 				0081801F29138A600068EF40 /* QuizApp */,
 				0081803629138A630068EF40 /* QuizAppTests */,
 				0010F82229844C9E008809F3 /* Frameworks */,
-				0010F82629844C9F008809F3 /* QuizApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -485,7 +469,6 @@
 				0081801929138A600068EF40 /* Sources */,
 				0081801A29138A600068EF40 /* Frameworks */,
 				0081801B29138A600068EF40 /* Resources */,
-				0010F82729844C9F008809F3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -493,7 +476,7 @@
 			);
 			name = QuizApp;
 			productName = QuizApp;
-			productReference = 0010F82629844C9F008809F3 /* QuizApp.app */;
+			productReference = 008CCB3E29844DF5008D7EA6 /* QuizApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0081803229138A630068EF40 /* QuizAppTests */ = {
@@ -511,7 +494,7 @@
 			);
 			name = QuizAppTests;
 			productName = QuizAppTests;
-			productReference = 0081803329138A630068EF40 /* QuizAppTests.xctest */;
+			productReference = 008CCB3F29844DF5008D7EA6 /* QuizAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
