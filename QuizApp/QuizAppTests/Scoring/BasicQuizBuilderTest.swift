@@ -43,8 +43,16 @@ struct BasicQuizBuilder {
 		try add(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
 	}
 	
+	init(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws {
+		try add(multipleAnswerQuestion: multipleAnswerQuestion, options: options, answer: answer)
+	}
+	
 	mutating func add(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws {
 		self = try adding(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
+	}
+	
+	mutating func add(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws {
+		self = try adding(multipleAnswerQuestion: multipleAnswerQuestion, options: options, answer: answer)
 	}
 	
 	func adding(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws -> BasicQuizBuilder {
@@ -52,6 +60,14 @@ struct BasicQuizBuilder {
 			question: Question.singleAnswer(singleAnswerQuestion),
 			options: options.all,
 			answer: [answer]
+		)
+	}
+	
+	func adding(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws -> BasicQuizBuilder {
+		try adding(
+			question: Question.multipleAnswer(multipleAnswerQuestion),
+			options: options.all,
+			answer: answer.all
 		)
 	}
 	
@@ -171,6 +187,85 @@ class BasicQuizBuilderTest: XCTestCase {
 	
 	// MARK: - Multiple Answer Question
 	
+	func test_initWithMultipleAnswerQuestion() throws {
+		let sut = try BasicQuizBuilder(
+			multipleAnswerQuestion: "Q1",
+			options: ["A1", "A2", "A3"],
+			answer: ["A1", "A2"]
+		)
+		
+		let result = sut.build()
+		
+		XCTAssertEqual(result.questions, [.multipleAnswer("Q1")])
+		XCTAssertEqual(result.options, [.multipleAnswer("Q1"): ["A1", "A2", "A3"]])
+		assertEqual(result.correctAnswers, [(.multipleAnswer("Q1"), ["A1", "A2"])])
+	}
+	
+	func test_addMultipleAnswerQuestion() throws {
+		var sut = try BasicQuizBuilder(multipleAnswerQuestion: "Q1", options: ["A1", "A2", "A3"], answer: ["A1", "A2"])
+		
+		try sut.add(multipleAnswerQuestion: "Q2", options: ["A4", "A5", "A6"], answer: ["A4", "A5"])
+		
+		let result = sut.build()
+		
+		XCTAssertEqual(result.questions, [.multipleAnswer("Q1"), .multipleAnswer("Q2")])
+		XCTAssertEqual(result.options, [
+			.multipleAnswer("Q1"): ["A1", "A2", "A3"],
+			.multipleAnswer("Q2"): ["A4", "A5", "A6"]
+		])
+		assertEqual(result.correctAnswers, [
+			(.multipleAnswer("Q1"), ["A1", "A2"]),
+			(.multipleAnswer("Q2"), ["A4", "A5"])
+		])
+	}
+	
+	func test_addingMultipleAnswerQuestion() throws {
+		let result = try BasicQuizBuilder(multipleAnswerQuestion: "Q1", options: ["A1", "A2", "A3"], answer: ["A1", "A2"])
+			.adding(multipleAnswerQuestion: "Q2", options: ["A4", "A5", "A6"],answer: ["A4", "A5"])
+			.build()
+		
+		XCTAssertEqual(result.questions, [.multipleAnswer("Q1"), .multipleAnswer("Q2")])
+		XCTAssertEqual(result.options, [
+			.multipleAnswer("Q1"): ["A1", "A2", "A3"],
+			.multipleAnswer("Q2"): ["A4", "A5", "A6"]
+		])
+		assertEqual(result.correctAnswers, [
+			(.multipleAnswer("Q1"), ["A1", "A2"]),
+			(.multipleAnswer("Q2"), ["A4", "A5"])
+		])
+	}
+	
+	func test_initWithMultipleAnswerQuestion_invalidData_throw() throws {
+		let params: [(q: String, o: NonEmptyOptions, a: NonEmptyOptions, e: BasicQuizBuilder.AddingError)] = [
+			("Q1", ["A1", "A1", "A3"], ["A1", "A3"], .duplicatedOptions(["A1", "A1", "A3"])),
+			("Q1", ["A1", "A2", "A3"], ["A1", "A1", "A3"], .duplicatedAnswers(["A1", "A1", "A3"])),
+			("Q1", ["A1", "A2", "A3"], ["A4"], .missingAnswerInOptions(answer: ["A4"], options: ["A1", "A2", "A3"]))
+		]
+		
+		try params.forEach { q, o, a, e in
+			assert(try BasicQuizBuilder(multipleAnswerQuestion: q, options: o, answer: a), throws: e)
+		}
+	}
+	
+	func test_addMultipleAnswerQuestion_invalidData_throw() throws {
+		var sut = try BasicQuizBuilder(
+			multipleAnswerQuestion: "Q1",
+			options: ["A1", "A2", "A3"],
+			answer: ["A1", "A2"]
+		)
+		
+		let params: [(q: String, o: NonEmptyOptions, a: NonEmptyOptions, e: BasicQuizBuilder.AddingError)] = [
+			("Q1", ["A4", "A5", "A6"], ["A1", "A2"], .duplicateQuestion(.multipleAnswer("Q1"))),
+			("Q2", ["A4", "A4", "A6"], ["A4", "A6"], .duplicatedOptions(["A4", "A4", "A6"])),
+			("Q2", ["A4", "A5", "A6"], ["A4", "A4", "A6"], .duplicatedAnswers(["A4", "A4", "A6"])),
+			("Q2", ["A4", "A5", "A6"], ["A7"], .missingAnswerInOptions(answer: ["A7"], options: ["A4", "A5", "A6"]))
+		]
+		
+		try params.forEach { q, o, a, e in
+			assert(try sut.add(multipleAnswerQuestion: q, options: o, answer: a), throws: e)
+			assert(try sut.adding(multipleAnswerQuestion: q, options: o, answer: a), throws: e)
+		}
+	}
 	
 	
 	// MARK: - Helpers
