@@ -2,111 +2,10 @@
 
 import XCTest
 import QuizEngine
+import QuizApp
 
-struct BasicQuiz {
-	let questions: [Question<String>]
-	let options: [Question<String> : [String]]
-	let correctAnswers: [(Question<String>, [String])]
-}
-
-struct NonEmptyOptions {
-	let head: String
-	let tail: [String]
-	
-	init(_ head: String, _ tail: [String]) {
-		self.head = head
-		self.tail = tail
-	}
-	
-	var all: [String] { [head] + tail }
-}
-
-struct BasicQuizBuilder {
-	private var questions: [Question<String>] = []
-	private var options: [Question<String> : [String]] = [:]
-	private var correctAnswers: [(Question<String>, [String])] = []
-	
-	enum AddingError: Equatable, Error {
-		case duplicateQuestion(Question<String>)
-		case duplicatedOptions([String])
-		case duplicatedAnswers([String])
-		case missingAnswerInOptions(answer: [String], options: [String])
-	}
-	
-	private init(questions: [Question<String>], options: [Question<String> : [String]], correctAnswers: [(Question<String>, [String])]) {
-		self.questions = questions
-		self.options = options
-		self.correctAnswers = correctAnswers
-	}
-	
-	init(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws {
-		try add(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
-	}
-	
-	init(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws {
-		try add(multipleAnswerQuestion: multipleAnswerQuestion, options: options, answer: answer)
-	}
-	
-	mutating func add(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws {
-		self = try adding(singleAnswerQuestion: singleAnswerQuestion, options: options, answer: answer)
-	}
-	
-	mutating func add(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws {
-		self = try adding(multipleAnswerQuestion: multipleAnswerQuestion, options: options, answer: answer)
-	}
-	
-	func adding(singleAnswerQuestion: String, options: NonEmptyOptions, answer: String) throws -> BasicQuizBuilder {
-		try adding(
-			question: Question.singleAnswer(singleAnswerQuestion),
-			options: options.all,
-			answer: [answer]
-		)
-	}
-	
-	func adding(multipleAnswerQuestion: String, options: NonEmptyOptions, answer: NonEmptyOptions) throws -> BasicQuizBuilder {
-		try adding(
-			question: Question.multipleAnswer(multipleAnswerQuestion),
-			options: options.all,
-			answer: answer.all
-		)
-	}
-	
-	func build() -> BasicQuiz {
-		BasicQuiz(questions: questions, options: options, correctAnswers: correctAnswers)
-	}
-
-	private func adding(question: Question<String>, options: [String], answer: [String]) throws -> BasicQuizBuilder {
-		guard !questions.contains(question) else {
-			throw AddingError.duplicateQuestion(question)
-		}
-		
-		guard Set(options).count == options.count else {
-			throw AddingError.duplicatedOptions(options)
-		}
-		
-		guard Set(answer).count == answer.count else {
-			throw AddingError.duplicatedAnswers(answer)
-		}
-		
-		guard Set(answer).isSubset(of: Set(options)) else {
-			throw AddingError.missingAnswerInOptions(answer: answer, options: options)
-		}
-		
-		var newOptions = self.options
-		newOptions[question] = options
-		
-		return .init(
-			questions: questions + [question],
-			options: newOptions,
-			correctAnswers: correctAnswers + [(question, answer)]
-		)
-	}
-}
-
-class BasicQuizBuilderTest: XCTestCase {
-	
+class BasicQuizBuilderTest: XCTestCase {	
 	// MARK: - Single Answer Question
-	
 	func test_initWithSingleAnswerQuestion() throws {
 		let sut = try BasicQuizBuilder(
 			singleAnswerQuestion: "Q1",
@@ -186,7 +85,6 @@ class BasicQuizBuilderTest: XCTestCase {
 	}
 	
 	// MARK: - Multiple Answer Question
-	
 	func test_initWithMultipleAnswerQuestion() throws {
 		let sut = try BasicQuizBuilder(
 			multipleAnswerQuestion: "Q1",
@@ -273,15 +171,9 @@ class BasicQuizBuilderTest: XCTestCase {
 		XCTAssertTrue(argument1.elementsEqual(argument2, by: ==), "\(argument1) is not equal to \(argument2)", file: file, line: line)
 	}
 	
-	func assert<T>(_ expression: @autoclosure () throws -> T, throws expectedError: BasicQuizBuilder.AddingError, file: StaticString = #filePath, line: UInt = #line) {
+	private func assert<T>(_ expression: @autoclosure () throws -> T, throws expectedError: BasicQuizBuilder.AddingError, file: StaticString = #filePath, line: UInt = #line) {
 		XCTAssertThrowsError(try expression()) { error in
 			XCTAssertEqual(error as? BasicQuizBuilder.AddingError, expectedError, file: file, line: line)
 		}
-	}
-}
-
-extension NonEmptyOptions: ExpressibleByArrayLiteral {
-	init(arrayLiteral elements: String...) {
-		self.init(elements[0], Array(elements.dropFirst()))
 	}
 }
