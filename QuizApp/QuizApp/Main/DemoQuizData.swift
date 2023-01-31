@@ -4,18 +4,18 @@ import BasicQuizDomain
 
 let demoQuiz = try!
 	BasicQuizBuilder(
-		singleAnswerQuestion: "What's Mike's nationality?",
-		options: ["Canadian", "American", "Greek"],
-		answer: "Greek"
+		singleAnswerQuestion: "What year was the very first model of the iPhone released?",
+		options: ["2006", "2007", "2008"],
+		answer: "2007"
 	)
 	.adding(
-		multipleAnswerQuestion: "What are Caio's nationalities?",
-		options: ["Portuguese", "American", "Brazilian"],
-		answer: ["Portuguese", "Brazilian"]
+		multipleAnswerQuestion: "Which two months are named after Emperors of the Roman Empire?",
+		options: ["March", "July", "August"],
+		answer: ["July", "August"]
 	)
 	.adding(
-		singleAnswerQuestion: "What's the capital of Brazil?",
-		options: ["Sao Paolo", "Rio de Janeiro", "Brasilia"],
-		answer: "Brasilia"
+		singleAnswerQuestion: "Who is often called the father of the computer?",
+		options: ["Charles Babbage", "Alan Turing"],
+		answer: "Charles Babbage"
 	)
 	.build()
