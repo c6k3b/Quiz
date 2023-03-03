@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-class QuizNavigationStore: ObservableObject {
+final class QuizNavigationStore: ObservableObject {
 	enum CurrentView {
 		case single(SingleAnswerQuestion)
 		case multiple(MultipleAnswerQuestion)

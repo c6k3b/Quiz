@@ -3,7 +3,7 @@
 import XCTest
 import BasicQuizDomain
 
-class BasicQuizBuilderTest: XCTestCase {	
+final class BasicQuizBuilderTest: XCTestCase {	
 	// MARK: - Single Answer Question
 	func test_initWithSingleAnswerQuestion() throws {
 		let sut = try BasicQuizBuilder(
