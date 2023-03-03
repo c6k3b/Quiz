@@ -19,7 +19,7 @@ final class QuestionPresenterTest: XCTestCase {
 	}
 
 	func test_title_forUnexistentQuestion_isEmpty() {
-		let sut = QuestionPresenter(questions: [], question: Question.singleAnswer("A1"))
+		let sut = QuestionPresenter(questions: [], question: question1)
 		XCTAssertEqual(sut.title, "")
 	}
 }

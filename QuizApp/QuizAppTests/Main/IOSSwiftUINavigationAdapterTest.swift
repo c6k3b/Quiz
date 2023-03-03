@@ -6,23 +6,23 @@ import BasicQuizDomain
 @testable import QuizApp
 
 final class IOSSwiftUINavigationAdapterTest: XCTestCase {
-	func test_questionViewController_singleAnswer_createsControllerWithTitle() throws {
+	func test_answerForQuestion_singleAnswer_createsViewWithTitle() throws {
 		let view = try XCTUnwrap(makeSingleAnswerQuestion())
 		let presenter = QuestionPresenter(questions: questions, question: singleAnswerQuestion)
 		XCTAssertEqual(view.title, presenter.title)
 	}
 
-	func test_questionViewController_singleAnswer_createsControllerWithQuestion() throws {
+	func test_answerForQuestion_singleAnswer_createsViewWithQuestion() throws {
 		let view = try XCTUnwrap(makeSingleAnswerQuestion())
 		XCTAssertEqual(view.question, "Q1")
 	}
 
-	func test_questionViewController_singleAnswer_createsControllerWithOptions() throws {
+	func test_answerForQuestion_singleAnswer_createsViewWithOptions() throws {
 		let view = try XCTUnwrap(makeSingleAnswerQuestion())
 		XCTAssertEqual(view.options, options[singleAnswerQuestion])
 	}
 
-	func test_questionViewController_singleAnswer_createsControllerWithAnswerCallback() throws {
+	func test_answerForQuestion_singleAnswer_createsViewWithAnswerCallback() throws {
 		var answers = [[String]]()
 		let view = try XCTUnwrap(makeSingleAnswerQuestion(answerCallback: { answers.append($0) }))
 
@@ -35,38 +35,38 @@ final class IOSSwiftUINavigationAdapterTest: XCTestCase {
 		XCTAssertEqual(answers, [[view.options[0]], [view.options[1]]])
 	}
 
-	func test_questionViewController_multipleAnswer_createsControllerWithTitle() throws {
+	func test_answerForQuestion_multipleAnswer_createsViewWithTitle() throws {
 		let view = try XCTUnwrap(makeMultipleAnswerQuestion())
 		let presenter = QuestionPresenter(questions: questions, question: multipleAnswerQuestion)
 		XCTAssertEqual(view.title, presenter.title)
 	}
 
-	func test_questionViewController_multipleAnswer_createsControllerWithQuestion() throws {
+	func test_answerForQuestion_multipleAnswer_createsViewWithQuestion() throws {
 		let view = try XCTUnwrap(makeMultipleAnswerQuestion())
 		XCTAssertEqual(view.question, "Q2")
 	}
 
-	func test_questionViewController_multipleAnswer_createsControllerWithOptions() throws {
+	func test_answerForQuestion_multipleAnswer_createsViewWithOptions() throws {
 		let view = try XCTUnwrap(makeMultipleAnswerQuestion())
 		XCTAssertEqual(view.store.options.map(\.text), options[multipleAnswerQuestion])
 	}
 
-	func test_resultsViewController_createsControllerWithTitle() throws {
+	func test_didCompleteQuiz_createsResultViewWithTitle() throws {
 		let (view, presenter) = try XCTUnwrap(makeResults())
 		XCTAssertEqual(view.title, presenter.title)
 	}
 
-	func test_resultsViewController_createsControllerWithSummary() throws {
+	func test_didCompleteQuiz_createsResultViewWithSummary() throws {
 		let (view, presenter) = try XCTUnwrap(makeResults())
 		XCTAssertEqual(view.summary, presenter.summary)
 	}
 
-	func test_resultsViewController_createsControllerWithPresentableAnswers() throws {
+	func test_didCompleteQuiz_createsResultViewWithPresentableAnswers() throws {
 		let (view, presenter) = try XCTUnwrap(makeResults())
 		XCTAssertEqual(view.answers, presenter.presentableAnswers)
 	}
 
-	func test_resultsViewController_createsControllerWithPlayAgainAction() throws {
+	func test_didCompleteQuiz_createsResultViewWithPlayAgainAction() throws {
 		var playAgainCount = 0
 		let (view, _) = try XCTUnwrap(makeResults(playAgain: { playAgainCount += 1 }))
 		XCTAssertEqual(playAgainCount, 0)
